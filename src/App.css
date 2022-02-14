@@ -62,15 +62,7 @@ label {
 }
 .input {
   width: 100vw;
-  padding: 20px;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: white;
-}
-.input {
-  width: 100%;
-  padding: 20px;
+  padding: 0px;
   background: transparent;
   border: none;
   outline: none;
@@ -106,7 +98,9 @@ label {
 button {
   display: inline-block;
   padding: 12px 24px;
-  background: rgb(220, 220, 220);
+  /* background: rgb(220, 220, 220); */
+  background: white;
+
   font-weight: bold;
   color: rgb(77, 76, 76);
   border: none;
@@ -120,6 +114,24 @@ button:hover {
   background: #34a853;
   color: #ffffff;
 }
+
+.button-register {
+  width: 150px;
+}
+
+.button-facebook {
+  width: 320px;
+  background-color: #1877f2;
+  color: white;
+  margin-top: 20px;
+}
+.button-google {
+  width: 320px;
+  background-color: white;
+  color: black;
+  margin-top: 20px;
+}
+
 .body {
   width: 340px;
   height: 844px;

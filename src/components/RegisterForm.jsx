@@ -9,7 +9,14 @@ function RegisterForm() {
 
       <form>
         <label className="label-register">
-          <p className="label-txt">Name</p>
+          <p className="label-txt">First Name</p>
+          <input type="text" className="input" />
+          <div className="line-box">
+            <div className="line"></div>
+          </div>
+        </label>
+        <label className="label-register">
+          <p className="label-txt">Last Name</p>
           <input type="text" className="input" />
           <div className="line-box">
             <div className="line"></div>

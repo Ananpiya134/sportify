@@ -10,20 +10,14 @@ function LoginForm() {
       </div>
 
       <form>
-        <label>
+        <label style={{ lineHeight: "0px" }}>
           <p className="label-txt">Please Enter Email</p>
           <input type="text" className="input" />
           <div className="line-box">
             <div className="line"></div>
           </div>
         </label>
-        <label>
-          <p className="label-txt">Name</p>
-          <input type="text" className="input" />
-          <div className="line-box">
-            <div className="line"></div>
-          </div>
-        </label>
+
         <label>
           <p className="label-txt">Enter Your Password</p>
           <input type="password" className="input" />
@@ -31,13 +25,7 @@ function LoginForm() {
             <div className="line"></div>
           </div>
         </label>
-        <label>
-          <p className="label-txt">Repeat Your Password</p>
-          <input type="password" className="input" />
-          <div className="line-box">
-            <div className="line"></div>
-          </div>
-        </label>
+
         <div style={{ marginTop: "120px" }}>
           <button type="submit">submit</button>
         </div>

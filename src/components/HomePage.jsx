@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "../config/axios";
+import { BsFacebook } from "react-icons/bs";
+import { FcGoogle } from "react-icons/fc";
 
 function HomePage() {
   return (
-    <div>
+    <div className={`d-flex flex-column align-items-center`}>
       <div style={{ marginTop: "69px" }}>
-        <h2>Sportify</h2>
+        <h2 className="b-text">Sportify</h2>
       </div>
       <img
         src="https://res.cloudinary.com/dup2jwtit/image/upload/v1644769593/david-tran-g-dZ1h7nQ0E-unsplash_1_grmrea.jpg"
@@ -16,11 +18,31 @@ function HomePage() {
       />
 
       <div
-        className="d-flex flex-wrap "
-        style={{ marginTop: "120px", alignItems: "center" }}
+        className="d-flex justify-content-around "
+        style={{
+          marginTop: "120px",
+          marginLeft: "5px",
+          marginRight: "5px",
+          alignItems: "center",
+          width: "350px",
+        }}
       >
-        <button type="submit">Sign in</button>
-        <button type="submit">Register</button>
+        <button className="button-register" type="submit">
+          Sign in
+        </button>
+        <button className="button-register" type="submit">
+          Register
+        </button>
+      </div>
+      <div style={{ marginTop: "30px" }}>
+        <button className="button-facebook" type="submit">
+          <BsFacebook style={{ width: "50px" }} /> Continue With Facebook
+        </button>
+      </div>
+      <div style={{ marginTop: "30px" }}>
+        <button className="button-google" type="submit">
+          <FcGoogle style={{ width: "50px" }} /> Continue With Google
+        </button>
       </div>
     </div>
   );
