@@ -4,7 +4,7 @@ import NavBar from '../NavBar';
 
 function EventDetail() {
     return (
-        <>
+        <div style={{ backgroundColor: "#ffffff" }}>
             {/* header imgae */}
             <div className={`event_detail_image_header`} />
 
@@ -54,7 +54,7 @@ function EventDetail() {
 
             </div>
             <NavBar />
-        </>
+        </div>
 
     );
 }
