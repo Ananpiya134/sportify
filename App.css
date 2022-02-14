@@ -156,7 +156,7 @@ button:hover {
   height: 47px;
   border-radius: 35px;
   background-color: #777777;
-  border: 2px solid #555555;
+  border: 1px solid #444444;
 }
 
 .filter_container {
