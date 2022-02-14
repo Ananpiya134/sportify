@@ -1,43 +1,16 @@
-body {
-  background-color: black;
-}
-
-h4 {
-  font: 20px;
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
-  color: white;
-  margin-left: 51px;
-}
-p {
-  font: 20px;
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
-  color: white;
-  margin-left: 0px;
-  margin-top: 15px;
-}
-a {
-  font: 20px;
-  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-    sans-serif;
-  color: white;
-  margin-left: 0px;
-  margin-top: 15px;
-  text-decoration: none;
-}
-
 form {
   width: 70%;
   margin: 60px auto;
   margin-bottom: 0px;
+  margin-top: 10px;
+  padding-bottom: 0px;
   display: flex;
   flex-direction: column;
 
   padding: 30px 0px 50px 0px;
   text-align: center;
-  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+  /* -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1); */
+  /* box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1); */
 }
 label {
   display: block;
@@ -45,29 +18,30 @@ label {
   margin: 0px;
   color: white;
   margin-top: 10px;
+
   padding-block: inherit;
+  padding-bottom: 30px;
 }
+.label-register {
+  padding-top: 25px;
+  /* padding-bottom: 30px; */
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
 .label-txt {
   position: absolute;
   top: -1.6em;
-  padding: 10px;
+  padding: 30px 10px 10px 10px;
 
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   font-size: 0.8em;
   letter-spacing: 1px;
   color: white;
-  transition: ease 0.3s;
+  /* transition: ease 0.3s; */
 }
 .input {
   width: 100vw;
-  padding: 20px;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: white;
-}
-.input {
-  width: 100%;
   padding: 20px;
   background: transparent;
   border: none;
@@ -88,18 +62,18 @@ label {
   height: 2px;
   top: 0px;
   left: 50%;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   background: #8bc34a;
-  transition: ease 0.6s;
+  /* transition: ease 0.6s; */
 }
 
-.input:focus + .line-box .line {
+/* .input:focus + .line-box .line {
   width: 100%;
-}
+} */
 
-.label-active {
+/* .label-active {
   top: -3em;
-}
+} */
 
 button {
   display: inline-block;

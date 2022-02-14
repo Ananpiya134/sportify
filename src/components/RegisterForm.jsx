@@ -8,36 +8,58 @@ function RegisterForm() {
       </div>
 
       <form>
-        <label>
+        <label className="label-register">
           <p className="label-txt">Name</p>
           <input type="text" className="input" />
           <div className="line-box">
             <div className="line"></div>
           </div>
         </label>
-        <label>
+        <label className="label-register">
           <p className="label-txt">Email</p>
           <input type="text" className="input" />
           <div className="line-box">
             <div className="line"></div>
           </div>
         </label>
-        <label>
+        <label className="label-register">
           <p className="label-txt">Phone Number</p>
           <input type="text" className="input" />
           <div className="line-box">
             <div className="line"></div>
           </div>
         </label>
-        <label>
+        <label className="label-register">
           <p className="label-txt">Date of Birth</p>
+          <input
+            style={{
+              border: "none",
+              width: "70vw",
+              marginTop: "15px",
+              backgroundColor: "white",
+              color: "black",
+              textAlign: "center",
+            }}
+            type="date"
+            className="form-control"
+            // value="2022-01-12"
+            id="txtDate"
+            name="txtDate"
+          />
+          <div className="line-box">
+            <div className="line"></div>
+          </div>
+        </label>
+
+        <label className="label-register">
+          <p className="label-txt">Password</p>
           <input type="text" className="input" />
           <div className="line-box">
             <div className="line"></div>
           </div>
         </label>
-        <label>
-          <p className="label-txt">Gender</p>
+        <label className="label-register">
+          <p className="label-txt">Confirm Password</p>
           <input type="text" className="input" />
           <div className="line-box">
             <div className="line"></div>
@@ -45,13 +67,11 @@ function RegisterForm() {
         </label>
         <div
           style={{
-            marginTop: "30px",
+            marginTop: "0px",
             paddingLeft: "0px",
-            // backgroundColor: "green",
           }}
         >
           <button>NEXT</button>
-          {/* <a href="#">NEXT</a> */}
         </div>
       </form>
     </div>

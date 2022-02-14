@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "../config/axios";
 
 function LoginForm() {
   return (
@@ -24,7 +25,7 @@ function LoginForm() {
           </div>
         </label>
         <label>
-          <p className="label-txt">Enetr Your Password</p>
+          <p className="label-txt">Enter Your Password</p>
           <input type="password" className="input" />
           <div className="line-box">
             <div className="line"></div>
@@ -37,7 +38,7 @@ function LoginForm() {
             <div className="line"></div>
           </div>
         </label>
-        <div style={{ marginTop: "20px" }}>
+        <div style={{ marginTop: "120px" }}>
           <button type="submit">submit</button>
         </div>
       </form>
