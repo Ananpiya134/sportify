@@ -1,6 +1,6 @@
 import '../../App.css';
 import MainBody from './MainBody';
-import NavBar from '../NavBar';
+import NavBar from '../layout/NavBar';
 
 function HomePage() {
 

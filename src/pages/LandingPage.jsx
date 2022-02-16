@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../config/axios";
 
-function HomePage() {
+function LandingPage() {
+
+  const navigate = useNavigate();
   return (
     <div>
       <div style={{ marginTop: "69px" }}>
@@ -19,11 +21,21 @@ function HomePage() {
         className="d-flex flex-wrap "
         style={{ marginTop: "120px", alignItems: "center" }}
       >
-        <button type="submit">Sign in</button>
-        <button type="submit">Register</button>
+        <button
+          type="button"
+          onClick={() => navigate('/login')}
+        >
+          Sign in
+        </button>
+        <button
+          type="button"
+          onClick={() => navigate('/register')}
+        >
+          Register
+        </button>
       </div>
     </div>
   );
 }
 
-export default HomePage;
+export default LandingPage;

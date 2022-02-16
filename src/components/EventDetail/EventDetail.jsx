@@ -1,6 +1,6 @@
 
 import '../../App.css'
-import NavBar from '../NavBar';
+import NavBar from '../layout/NavBar';
 
 function EventDetail() {
     return (
