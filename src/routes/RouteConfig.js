@@ -1,29 +1,31 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useContext } from "react";
 import HomePage from "../components/HomePage/HomePage";
 import MainLayout from "../components/layout/MainLayout";
 import EventDetail from "../components/EventDetail/EventDetail";
-import LoginForm from '../components/auth/LoginForm'
-import RegisterForm from '../components/auth/RegisterForm'
-import LandingPage from '../pages/LandingPage'
+import LoginForm from "../components/auth/LoginForm";
+import RegisterForm from "../components/auth/RegisterForm";
+import LandingPage from "../pages/LandingPage";
 import PublicLayout from "../components/layout/PublicLayout";
 import CreateEvent from "../components/CreateEvent/CreateEvent";
+import { AuthContext } from "../contexts/AuthContext";
 
 function RouteConfig() {
-
-    return (
-        <Routes>
-            {/* <Route path="/" element={<PublicLayout />}>
-                <Route path="login" element={<LoginForm />} />
-                <Route path="register" element={<RegisterForm />} />
-                <Route path="" element={<LandingPage />} />
-            </Route> */}
-            <Route path="/" element={<MainLayout />}>
-                <Route path="" element={<HomePage />} />
-                <Route path="*" element={<Navigate to='/' />} />
-                <Route path="create-event" element={<CreateEvent />} />
-            </Route>
-        </Routes>
-    );
+	const { user } = useContext(AuthContext);
+	return (
+		<Routes>
+			<Route path="/" element={<PublicLayout />}>
+				<Route path="login" element={<LoginForm />} />
+				<Route path="register" element={<RegisterForm />} />
+				<Route path="" element={<LandingPage />} />
+			</Route>
+			{/* <Route path="/" element={<MainLayout />}>
+				<Route path="" element={<HomePage />} />
+				<Route path="*" element={<Navigate to="/" />} />
+				<Route path="create-event" element={<CreateEvent />} />
+			</Route> */}
+		</Routes>
+	);
 }
 
-export default RouteConfig
+export default RouteConfig;
