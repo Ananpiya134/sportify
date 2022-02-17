@@ -256,10 +256,6 @@ button:hover {
 /* Choose Event */
 
 .container-sport {
-  /* display: flex;
-  flex-direction: row;
-  margin-top: 50px;
-  margin-left: 30px; */
   display: flex;
   flex-direction: row;
   margin: auto;
@@ -267,10 +263,6 @@ button:hover {
 }
 
 .column-sport {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px 10px 0px 18px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -293,7 +285,7 @@ svg {
   display: flex;
   flex-direction: column;
   height: 100%;
-  /* margin: 80px 10px 10px 0px; */
+
   padding: 12px;
   width: 100%;
 }
