@@ -14,16 +14,19 @@ function RouteConfig() {
 	const { user } = useContext(AuthContext);
 	return (
 		<Routes>
-			<Route path="/" element={<PublicLayout />}>
-				<Route path="login" element={<LoginForm />} />
-				<Route path="register" element={<RegisterForm />} />
-				<Route path="" element={<LandingPage />} />
-			</Route>
-			{/* <Route path="/" element={<MainLayout />}>
+			{/* {user ? ( */}
+			<Route path="/" element={<MainLayout />}>
 				<Route path="" element={<HomePage />} />
 				<Route path="*" element={<Navigate to="/" />} />
 				<Route path="create-event" element={<CreateEvent />} />
-			</Route> */}
+			</Route>
+			{/* ) : (
+				<Route path="/" element={<PublicLayout />}>
+					<Route path="login" element={<LoginForm />} />
+					<Route path="register" element={<RegisterForm />} />
+					<Route path="" element={<LandingPage />} />
+				</Route>
+			)} */}
 		</Routes>
 	);
 }

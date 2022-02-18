@@ -1,18 +1,18 @@
-import '../../App.css'
-import MainBody from './MainBody';
-import NavBar from '../layout/NavBar';
+import "../../App.css";
+import MainBody from "./MainBody";
+import NavBar from "../layout/NavBar";
+import FilterButton from "./FilterButton";
+import EventItem from "./EventItem";
 
 function HomePage() {
-
-    return (
-        <div
-            className={``}
-            style={{ width: "340px", height: "844px" }}
-        >
-            <MainBody />
-            <NavBar />
-        </div>
-    );
+	return (
+		<div className={``} style={{ width: "390px", height: "844px" }}>
+			<MainBody />
+			<FilterButton />
+			<EventItem />
+			<NavBar />
+		</div>
+	);
 }
 
 export default HomePage;

@@ -1,28 +1,23 @@
-
+import GoogleMapReact from "google-map-react";
+import { GOOGLE_MAP_API } from "../../config/env";
 
 function MainBody() {
-
-    return (
-        <div className="main_body ">
-            <div className={`filter_container d-flex `}>
-                <button className={`btn filter_btn`}>filter activity</button>
-            </div>
-
-
-            {/* event button */}
-            <div className={`event_container`}>
-                <div className={`event_image`}></div>
-                <div className={`mt-3 mx-2`}>
-                    <h3 className={`event_thumbnail_title`}>Basketball Society</h3>
-                    <h3 className={`event_thumbnail_title`}>Thammasat U.</h3>
-                    <p className={`b-text`}>date: <span>Thursday 28, April, 2022</span> <span> 5: 45</span> <span> P.M.</span></p>
-                    <p className={`b-text mt-4`}>1.3 k.m.</p>
-                </div>
-
-
-            </div>
-        </div>
-    );
-};
+	const coordinates = {
+		lat: 13.7437,
+		lng: 100.4985,
+	};
+	return (
+		<>
+			<GoogleMapReact
+				defaultCenter={coordinates}
+				center={coordinates}
+				defaultZoom={18}
+				bootstrapURLKeys={{ key: GOOGLE_MAP_API }}
+				style={{ width: "390px", height: "844px", margin: "0", padding: "0" }}
+				className={`main_body`}
+			></GoogleMapReact>
+		</>
+	);
+}
 
 export default MainBody;
