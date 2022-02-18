@@ -289,3 +289,9 @@ svg {
   padding: 12px;
   width: 100%;
 }
+
+.event-calendar {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
