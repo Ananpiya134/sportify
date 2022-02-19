@@ -144,8 +144,8 @@ button:hover {
 }
 .main_body {
 	/* background-image: url("./public/image/map.jpeg"); */
-	width: 390vw;
-	height: 766px;
+	width: 100vw;
+	height: 95vh;
 }
 
 .nav_body {
@@ -165,7 +165,7 @@ button:hover {
 	background-color: #141414;
 }
 .Nav {
-	position: sticky;
+	position: fixed;
 	bottom: 0;
 }
 
@@ -306,4 +306,8 @@ svg {
 
 	padding: 12px;
 	width: 100%;
+}
+
+.google_btn * {
+	color: black;
 }
