@@ -30,6 +30,10 @@ a {
   margin-top: 15px;
   text-decoration: none;
 }
+hr {
+  height: 5px;
+  margin: 0px;
+}
 
 form {
   width: 70%;
@@ -165,7 +169,7 @@ button:hover {
   background-color: #141414;
 }
 .Nav {
-  position: sticky;
+  position: absolute;
   bottom: 0;
 }
 
@@ -294,4 +298,16 @@ svg {
   margin-top: 50px;
   display: flex;
   justify-content: center;
+}
+
+.mapped-event {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.event-detail {
+  display: flex;
+  justify-content: center;
+  margin: 0px 10px 0px 10px;
 }
