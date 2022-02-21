@@ -15,18 +15,18 @@ function RouteConfig() {
 	return (
 		<Routes>
 			{/* {user ? ( */}
-			<Route path="/" element={<MainLayout />}>
+			{/* <Route path="/" element={<MainLayout />}>
 				<Route path="" element={<HomePage />} />
 				<Route path="*" element={<Navigate to="/" />} />
 				<Route path="create-event" element={<CreateEvent />} />
+			</Route> */}
+			{/* ) : ( */}
+			<Route path="/" element={<PublicLayout />}>
+				<Route path="login" element={<LoginForm />} />
+				<Route path="register" element={<RegisterForm />} />
+				<Route path="" element={<LandingPage />} />
 			</Route>
-			{/* ) : (
-				<Route path="/" element={<PublicLayout />}>
-					<Route path="login" element={<LoginForm />} />
-					<Route path="register" element={<RegisterForm />} />
-					<Route path="" element={<LandingPage />} />
-				</Route>
-			)} */}
+			{/* )} */}
 		</Routes>
 	);
 }
