@@ -1,10 +1,10 @@
 import React from "react";
 
 function CalendarDetail({ data }) {
-  console.log(data);
+  //   console.log(data);
   return (
     <>
-      <div>
+      <div className="calendar-detail">
         <p>{data.title}</p>
         <p>{data.date}</p>
       </div>

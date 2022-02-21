@@ -6,6 +6,7 @@ import RegisterForm from "./components/RegisterForm";
 import EventDetail from "./components/EventDetail/EventDetail";
 import ChooseEvent from "./components/ChooseEvent";
 import EventCalendar from "./components/Calendar/EventCalendar";
+import Profile from "./components/Profile";
 import NavBar from "./components/NavBar";
 
 function App() {
@@ -16,7 +17,8 @@ function App() {
       {/* <RegisterForm /> */}
       {/* <EventDetail /> */}
       {/* <ChooseEvent /> */}
-      <EventCalendar />
+      {/* <EventCalendar /> */}
+      <Profile />
       <NavBar />
     </div>
   );

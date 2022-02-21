@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-// import { EventContext } from "../../Context/eventContext";
 import { eventList } from "../../dbs/testLogic";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
