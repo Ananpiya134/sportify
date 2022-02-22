@@ -14,27 +14,27 @@ import EventList from "../components/Calendar/EventList";
 import EventCalendar from "../components/Calendar/EventCalendar";
 
 function RouteConfig() {
-  const { user } = useContext(AuthContext);
-  return (
-    <Routes>
-      {/* {user ? ( */}
-      <Route path="/" element={<MainLayout />}>
-        <Route path="" element={<HomePage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/event" element={<EventCalendar />} />
+	const { user } = useContext(AuthContext);
+	return (
+		<Routes>
+			{/* {user ? ( */}
+			<Route path="/" element={<MainLayout />}>
+				<Route path="" element={<HomePage />} />
+				<Route path="/profile" element={<Profile />} />
+				<Route path="/event" element={<EventCalendar />} />
 
-        <Route path="*" element={<Navigate to="/" />} />
-        <Route path="create-event" element={<CreateEvent />} />
-      </Route>
-      {/* ) : (
-				<Route path="/" element={<PublicLayout />}>
-					<Route path="login" element={<LoginForm />} />
-					<Route path="register" element={<RegisterForm />} />
-					<Route path="" element={<LandingPage />} />
-				</Route>
-			)} */}
-    </Routes>
-  );
+				<Route path="*" element={<Navigate to="/" />} />
+				<Route path="create-event" element={<CreateEvent />} />
+			</Route>
+			{/* ) : ( */}
+			{/* <Route path="/" element={<PublicLayout />}>
+				<Route path="login" element={<LoginForm />} />
+				<Route path="register" element={<RegisterForm />} />
+				<Route path="" element={<LandingPage />} />
+			</Route> */}
+			{/* )}  */}
+		</Routes>
+	);
 }
 
 export default RouteConfig;
