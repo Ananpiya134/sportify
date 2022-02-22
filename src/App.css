@@ -209,6 +209,10 @@ button:hover {
   height: 284px;
   border-radius: 30px;
 }
+.main_body_eventDetail p {
+  color: #000;
+  font-size: 12px;
+}
 .swipe_btn {
   font-size: 15px;
   color: black;
@@ -246,6 +250,9 @@ button:hover {
   color: #000000;
   font-size: 32px;
   line-height: 20px;
+}
+.event_detail_location {
+  color: #000000;
 }
 
 .event_stats {

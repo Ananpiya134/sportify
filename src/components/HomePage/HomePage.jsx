@@ -6,9 +6,11 @@ import FilterButton from "./FilterButton";
 import EventItem from "./EventItem";
 import { data } from "../../dbs/testLogic";
 import { getPreciseDistance } from "geolib";
+import axios from "../../config/axios";
 
 function HomePage() {
   const [id, setId] = useState(3);
+  // const [data, setData] = useState(null);
   const [eventData, setEventData] = useState(data[id]);
   const [userLocation, setUserLocation] = useState({
     latitude: 0,
@@ -53,6 +55,8 @@ function HomePage() {
         console.log(err);
       }
     });
+
+    // axios.get('events').then
   }, []);
 
   // set target distance onChanging of event item

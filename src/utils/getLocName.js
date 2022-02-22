@@ -1,8 +1,9 @@
+import { useState } from "react";
 import Geocode from "react-geocode";
 import { GEOCODE_API } from "../config/env";
+import React from "react";
 
-export const getLocName = (coordinate) => {
-  let address = "";
+export const getLocName = async (coordinate) => {
   // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
   Geocode.setApiKey(GEOCODE_API);
 
@@ -27,36 +28,41 @@ export const getLocName = (coordinate) => {
   // Get formatted address, city, state, country from latitude & longitude when
   // Geocode.setLocationType("ROOFTOP") enabled
   // the below parser will work for most of the countries
-  Geocode.fromLatLng(coordinate.latitude, coordinate.longitude).then(
-    (response) => {
-      const address = response.results[0].formatted_address;
-      let city, state, country;
-      for (let i = 0; i < response.results[0].address_components.length; i++) {
-        for (
-          let j = 0;
-          j < response.results[0].address_components[i].types.length;
-          j++
-        ) {
-          switch (response.results[0].address_components[i].types[j]) {
-            case "locality":
-              city = response.results[0].address_components[i].long_name;
-              break;
-            case "administrative_area_level_1":
-              state = response.results[0].address_components[i].long_name;
-              break;
-            case "country":
-              country = response.results[0].address_components[i].long_name;
-              break;
-            default:
-              break;
-          }
+  try {
+    const response = await Geocode.fromLatLng(
+      coordinate.latitude,
+      coordinate.longitude
+    );
+    // .then(
+    //   (response) => {
+    const address = response.results[0].formatted_address;
+
+    let city, state, country;
+    for (let i = 0; i < response.results[0].address_components.length; i++) {
+      for (
+        let j = 0;
+        j < response.results[0].address_components[i].types.length;
+        j++
+      ) {
+        switch (response.results[0].address_components[i].types[j]) {
+          case "locality":
+            city = response.results[0].address_components[i].long_name;
+            break;
+          case "administrative_area_level_1":
+            state = response.results[0].address_components[i].long_name;
+            break;
+          case "country":
+            country = response.results[0].address_components[i].long_name;
+            break;
+          default:
+            break;
         }
       }
-      console.log(city, state, country);
-      console.log(address);
-    },
-    (error) => {
-      console.error(error);
     }
-  );
+    console.log(city, state, country);
+    console.log(address);
+    return await address;
+  } catch (error) {
+    console.error(error);
+  }
 };

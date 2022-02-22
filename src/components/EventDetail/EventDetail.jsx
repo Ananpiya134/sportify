@@ -2,16 +2,28 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../App.css";
-import NavBar from "../layout/NavBar";
+import { getLocName } from "../../utils/getLocName";
 
 function EventDetail() {
   const [event, setEvent] = useState(null);
+  const [locName, setLocName] = useState("");
 
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`events/${id}`).then((res) => setEvent(res.data.event));
+    axios.get(`events/${id}`).then((res) => {
+      setEvent(res.data.event);
+    });
   }, [id]);
+
+  useEffect(() => {
+    if (event) {
+      getLocName({
+        latitude: event.locationLat,
+        longitude: event.locationLng,
+      }).then((res) => setLocName(res));
+    }
+  }, [event]);
 
   console.log(event);
 
@@ -28,10 +40,7 @@ function EventDetail() {
               {" "}
               {event.title}
             </h1>
-            <h1 className={`event_detail_header`} style={{ fontSize: "32px" }}>
-              {" "}
-              {`{Location here}`}
-            </h1>
+            <h6 className={`event_detail_location`}>{locName}</h6>
             <div>
               <p className={`b-text`}>
                 {/* date: Thursday, 28 April, 2022. 5:45 P.M. */}

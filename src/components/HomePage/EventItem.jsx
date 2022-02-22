@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getLocName } from "../../utils/getLocName";
 
 function EventItem({ id, setId, eventData, targetDistance, targetLocation }) {
+  const [locName, setLocName] = useState("");
+
+  useEffect(() => {
+    const getLoc = async () => {
+      const name = await getLocName(targetLocation);
+      setLocName(name);
+    };
+    getLoc();
+  }, []);
+
   return (
     <div className="z-index-1100">
       <div className="event_container">
@@ -12,22 +23,24 @@ function EventItem({ id, setId, eventData, targetDistance, targetLocation }) {
         />
 
         {/* event detail box */}
-        <div className={`main_body_eventDetail`}>
-          <div className={`event_image`}></div>
-          <div className={`mt-3 mx-2`}>
-            <h3 className={`event_thumbnail_title text-black`}>
-              {eventData.title}
-            </h3>
-            <h4>{getLocName(targetLocation)}</h4>
-            <p className={`b-text`}>
-              date:
-              <span className="text-black">{eventData.date}</span>
-              <span className="text-black">{eventData.timeStart}</span>
-              <span className="text-black"> P.M.</span>
-            </p>
-            <p className={`b-text mt-4`}>{targetDistance} k.m.</p>
+        <Link to={`/events/${id}`}>
+          <div className={`main_body_eventDetail`}>
+            <div className={`event_image`}></div>
+            <div className={`mt-3 mx-2`}>
+              <h3 className={`event_thumbnail_title text-black`}>
+                {eventData.title}
+              </h3>
+              <p>{locName && locName.substr(0, 40) + "..."}</p>
+              <p className={`b-text`}>
+                date:
+                <span className="text-black">{eventData.date}</span>
+                <span className="text-black">{eventData.timeStart}</span>
+                <span className="text-black"> P.M.</span>
+              </p>
+              <p className={`b-text mt-4`}>{targetDistance} k.m.</p>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* right swipe button  */}
         <i
