@@ -10,7 +10,11 @@ function EventDetail() {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`events/${id}`).then((res) => setEvent(res.data.event));
+    console.log("in");
+    axios.get(`events/${id}`).then((res) => {
+      console.log(res);
+      setEvent(res.data.events);
+    });
   }, [id]);
 
   console.log(event);

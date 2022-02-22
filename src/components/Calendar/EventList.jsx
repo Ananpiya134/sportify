@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import Event from "./Event";
+import Event from "./event/Event";
 
 function EventList({ events }) {
   console.log(events);

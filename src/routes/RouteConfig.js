@@ -11,7 +11,7 @@ import CreateEvent from "../components/CreateEvent/CreateEvent";
 import Profile from "../components/Profile";
 import { AuthContext } from "../contexts/AuthContext";
 import EventList from "../components/Calendar/EventList";
-import EventCalendar from "../components/Calendar/EventCalendar";
+import EventCalendar from ".././components/Calendar/eventcalender/EventCalendar";
 
 function RouteConfig() {
   const { user } = useContext(AuthContext);

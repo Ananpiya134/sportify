@@ -7,9 +7,10 @@ import { Calendar } from "react-multi-date-picker";
 import "react-multi-date-picker/styles/colors/teal.css";
 import "react-multi-date-picker/styles/backgrounds/bg-gray.css";
 import "react-multi-date-picker/styles/layouts/mobile.css";
-import EventList from "../Calendar/EventList";
-import axios from "../../config/axios";
+import EventList from "../EventList";
+import axios from "../../../config/axios";
 import { useParams } from "react-router-dom";
+import "./eventcalender.css";
 
 function EventCalendar() {
   const [show, setShow] = useState("ALL");
@@ -54,7 +55,9 @@ function EventCalendar() {
       <div className="d-flex justify-content-center">
         <div className="mx-1">
           <button
-            className={`btn btn-${show === "ALL" ? "" : "outline-"}primary`}
+            className={`btn btn-${
+              show === "ALL" ? "" : "outline-"
+            }success btn-calender`}
             onClick={() => setShow("ALL")}
           >
             All
@@ -64,7 +67,7 @@ function EventCalendar() {
           <button
             className={`btn btn-${
               show === "CALENDAR" ? "" : "outline-"
-            }primary`}
+            }success btn-calender`}
             onClick={() => setShow("CALENDAR")}
           >
             Calendar
