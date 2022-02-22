@@ -10,6 +10,7 @@ function EventItem({ id, setId, eventData, targetDistance }) {
 					style={{ fontSize: "30px" }}
 					onClick={() => {
 						setId(id - 1);
+						console.log(id);
 					}}
 				/>
 
@@ -34,7 +35,10 @@ function EventItem({ id, setId, eventData, targetDistance }) {
 				<i
 					className="fa-solid fa-angle-right swipe_btn"
 					style={{ fontSize: "30px" }}
-					onClick={() => setId(id + 1)}
+					onClick={() => {
+						setId(id + 1);
+						console.log(id);
+					}}
 				/>
 			</div>
 		</div>

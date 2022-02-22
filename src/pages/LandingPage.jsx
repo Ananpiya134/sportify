@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../config/axios";
 import { BsFacebook } from "react-icons/bs";
@@ -7,10 +7,34 @@ import GoogleLogin from "react-google-login";
 import { REACT_GOOGLE_CLIENT_ID } from "../config/env";
 
 function LandingPage() {
+	const [loginData, setLoginData] = useState(
+		localStorage.getItem("loginData")
+			? JSON.parse(localStorage.getItem("loginData"))
+			: null
+	);
+
 	const navigate = useNavigate();
 
-	const handleLogin = (googleData) => {
+	const handleLogin = async (googleData) => {
+		const res = await fetch("/api/google-login", {
+			method: "POST",
+			body: JSON.stringify({
+				token: googleData.tokenId,
+			}),
+			header: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		const data = await res.json();
+		setLoginData(data);
+		localStorage.setItem("loginData", JSON.stringify(data));
 		console.log(googleData);
+	};
+
+	const handleLogout = () => {
+		localStorage.removeItem("loginData");
+		setLoginData(null);
 	};
 
 	const handleFailure = (res) => {
@@ -61,15 +85,22 @@ function LandingPage() {
 			</div>
 
 			{/* google login component */}
-			<GoogleLogin
-				clientId={REACT_GOOGLE_CLIENT_ID}
-				// style={{ color: "black" }}
-				className={`google_btn`}
-				buttonText="Continue with Google"
-				onSuccess={handleLogin}
-				onFailure={handleFailure}
-				cookiePolicy={"single_host_origin"}
-			></GoogleLogin>
+
+			{loginData ? (
+				<div>
+					<h3> you log in as {loginData.email}</h3>
+					<button onClick={handleLogout}>Logout</button>
+				</div>
+			) : (
+				<GoogleLogin
+					clientId={REACT_GOOGLE_CLIENT_ID}
+					className={`google_btn`}
+					buttonText="Continue with Google"
+					onSuccess={handleLogin}
+					onFailure={handleFailure}
+					cookiePolicy={"single_host_origin"}
+				></GoogleLogin>
+			)}
 
 			{/* <div style={{ marginTop: "30px" }}>
 				<button className="button-google" type="button">

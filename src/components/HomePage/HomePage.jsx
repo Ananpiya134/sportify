@@ -10,33 +10,61 @@ import { getPreciseDistance } from "geolib";
 function HomePage() {
 	const [id, setId] = useState(3);
 	const [eventData, setEventData] = useState(data[id]);
-	const [userLat, setUserLat] = useState(null);
-	const [userLng, setUserLng] = useState(null);
+	const [userLocation, setUserLocation] = useState({
+		latitude: 0,
+		longitude: 0,
+	});
 	const [targetDistance, setTargetDistance] = useState(null);
 
-	const coordinates = {
-		lat: Number(eventData.locationLat),
-		lng: Number(eventData.locationLng),
+	const targetLocation = {
+		latitude: Number(eventData.locationLat),
+		longitude: Number(eventData.locationLng),
 	};
 
-	useEffect(() => {
-		setEventData(data[id]);
+	// function calculate distance
+	function calculateDistance(startPoint, endPoint) {
+		if (!startPoint && !endPoint) return;
+		const distance = getPreciseDistance(
+			{
+				latitude: Number(startPoint.latitude),
+				longitude: Number(startPoint.longitude),
+			},
+			{
+				latitude: Number(endPoint.latitude),
+				longitude: Number(endPoint.longitude),
+			}
+		);
 
-		try {
-			navigator.geolocation.getCurrentPosition((pos) => {
-				setUserLat(pos.coords.latitude);
-				setUserLng(pos.coords.longitude);
-			});
-			const targetDistanceCalulation = getPreciseDistance(
-				{ lat: userLat, lng: userLng },
-				coordinates
+		return distance;
+	}
+
+	// find user location
+	useEffect(() => {
+		navigator.geolocation.getCurrentPosition((pos) => {
+			try {
+				if (pos.coords) {
+					setUserLocation((prev) => ({
+						...prev,
+						latitude: Number(pos.coords.latitude),
+						longitude: Number(pos.coords.longitude),
+					}));
+				}
+			} catch (err) {
+				console.log(err);
+			}
+		});
+	}, []);
+
+	// set target distance onChanging of event item
+	useEffect(() => {
+		if (userLocation !== {} && targetLocation !== null) {
+			const calculatedDistance = calculateDistance(
+				userLocation,
+				targetLocation
 			);
-			console.log(targetDistanceCalulation);
-			setTargetDistance((targetDistanceCalulation / 1000).toFixed(2));
-		} catch (err) {
-			console.log(err);
+			setTargetDistance((calculatedDistance / 1000).toFixed(2));
 		}
-	}, [id]);
+	}, [userLocation, id]);
 
 	return (
 		<div className={``} style={{ width: "390px", height: "844px" }}>
