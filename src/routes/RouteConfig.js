@@ -8,17 +8,20 @@ import RegisterForm from "../components/auth/RegisterForm";
 import LandingPage from "../pages/LandingPage";
 import PublicLayout from "../components/layout/PublicLayout";
 import CreateEvent from "../components/CreateEvent/CreateEvent";
+import Profile from "../components/Profile";
 import { AuthContext } from "../contexts/AuthContext";
 import TestCalendar from "../pages/TestCalendar";
+import EventCalendar from "../components/Calendar/EventCalendar";
 
 function RouteConfig() {
   const { user } = useContext(AuthContext);
   return (
     <Routes>
       {/* {user ? ( */}
-      <Route path="/test" element={<TestCalendar />} />
       <Route path="/" element={<MainLayout />}>
         <Route path="" element={<HomePage />} />
+        <Route path="/events" element={<EventCalendar />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="create-event" element={<CreateEvent />} />
       </Route>
