@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./event.css";
 
 function CalendarDetail({ data }) {
   // console.log(data);
@@ -11,15 +12,17 @@ function CalendarDetail({ data }) {
       <Link to={`/events/${data.id}`}>
         <div className="card bg-secondary" style={{ width: "20rem" }}>
           <div className="card-body">
-            <h5 className="card-title">{data.title}</h5>
-            <h6 className="card-subtitle mb-2 ">
+            <h3 className="card-title text-cd">{data.title}</h3>
+
+            <h6 className="card-subtitle mb-2 text-cd ">
               {new Date(data.timeStart).toDateString()}
             </h6>
-            <h6 className="card-subtitle mb-2 ">
+            <h6 className="card-subtitle mb-2 text-cd ">
               {timeStart}-{timeEnd}
             </h6>
-            <h6 className="card-subtitle mb-2 ">{data.locationLat}</h6>
-            <p className="card-text">
+            <h6 className="card-subtitle mb-2 text-cd ">{data.locationLat}</h6>
+            <hr className="line-card" />
+            <p className="card-text text-cd">
               Details: {data.detail.substr(0, 50) + "..."}
             </p>
           </div>

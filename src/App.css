@@ -9,13 +9,18 @@
 }
 
 body {
-  background-color: black;
+  background: linear-gradient(
+      180deg,
+      rgba(35, 37, 38, 1) 0%,
+      rgba(72, 74, 76, 1) 100%
+    )
+    no-repeat;
+  height: 100vh;
+  background-attachment: fixed;
 }
 
 h4 {
   font: 20px;
-  color: white;
-  margin-left: 51px;
 }
 p {
   font: 20px;
