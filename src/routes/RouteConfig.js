@@ -10,6 +10,8 @@ import PublicLayout from "../components/layout/PublicLayout";
 import CreateEvent from "../components/CreateEvent/CreateEvent";
 import Profile from "../components/Profile";
 import { AuthContext } from "../contexts/AuthContext";
+import EventList from "../components/Calendar/EventList";
+import EventCalendar from "../components/Calendar/EventCalendar";
 
 function RouteConfig() {
   const { user } = useContext(AuthContext);
@@ -19,6 +21,8 @@ function RouteConfig() {
       <Route path="/" element={<MainLayout />}>
         <Route path="" element={<HomePage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/event" element={<EventCalendar />} />
+
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="create-event" element={<CreateEvent />} />
       </Route>

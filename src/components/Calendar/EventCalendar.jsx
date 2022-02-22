@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useContext } from "react";
-import { eventList } from "../../dbs/testLogic";
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import EventList from "../Calendar/EventList";
-import axios from "axios";
+import axios from "../../config/axios";
 import { useParams } from "react-router-dom";
 
 function EventCalendar() {
@@ -15,7 +15,8 @@ function EventCalendar() {
   useEffect(() => {
     axios
       // .get(`/users/${ID}/events`)
-      .get(`/users/${3}/events`)
+      // .get(`/users/${3}/events`)
+      .get(`/users/${1}/events`)
 
       .then((res) => {
         console.log(event);

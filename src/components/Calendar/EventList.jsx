@@ -24,12 +24,12 @@ function EventList({ event }) {
         />
       </div> */}
       {/* {JSON.stringify(data[0].date)} */}
-
+      {/* 
       {event.map((item) => (
         <div key={item.id} className="col-md-6">
           <CalendarDetail data={item} />
         </div>
-      ))}
+      ))} */}
     </>
   );
 }
