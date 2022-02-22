@@ -7,14 +7,14 @@ const AuthContext = createContext();
 function AuthContextProvider({ children }) {
 	const [user, setUser] = useState(null);
 
-	// useEffect(() => {
-	// 	if (getToken()) {
-	// 		axios
-	// 			.get("/users/me")
-	// 			.then((res) => setUser(res.data.user))
-	// 			.catch((err) => console.log(err));
-	// 	}
-	// }, []);
+	useEffect(() => {
+		if (getToken()) {
+			axios
+				.get("/users/me")
+				.then((res) => setUser(res.data.user))
+				.catch((err) => console.log(err));
+		}
+	}, []);
 
 	const login = async (email, password) => {
 		try {

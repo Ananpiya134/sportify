@@ -17,7 +17,7 @@ function LoginForm() {
 
 	return (
 		<div>
-			<div style={{ marginTop: "69px" }}>
+			<div style={{ marginTop: "69px", marginLeft: "51px" }}>
 				<h4> Sign-in</h4>
 			</div>
 

@@ -12,6 +12,7 @@ import Profile from "../components/Profile";
 import { AuthContext } from "../contexts/AuthContext";
 import EventList from "../components/Calendar/EventList";
 import EventCalendar from "../components/Calendar/EventCalendar";
+import ChooseEvent from "../components/ChooseEvent";
 
 function RouteConfig() {
 	const { user } = useContext(AuthContext);
@@ -20,6 +21,7 @@ function RouteConfig() {
 			{/* {user ? ( */}
 			<Route path="/" element={<MainLayout />}>
 				<Route path="" element={<HomePage />} />
+				<Route path="/choose-event" element={<ChooseEvent />} />
 				<Route path="/profile" element={<Profile />} />
 				<Route path="/event" element={<EventCalendar />} />
 

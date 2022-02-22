@@ -15,7 +15,7 @@ body {
 h4 {
 	font: 20px;
 	color: white;
-	margin-left: 51px;
+	/* margin-left: 51px; */
 }
 p {
 	font: 20px;
@@ -278,6 +278,29 @@ button:hover {
 
 /* Choose Event */
 
+.filter_item {
+	background-color: #999b9d;
+	border: 1px solid #999b9d;
+	font-size: 10px;
+	color: #ffffff;
+	border-radius: 50px;
+}
+
+.filter_item > p {
+	margin: 2px;
+}
+.choose_event_container {
+	width: 95vw;
+	margin: auto;
+}
+.activity_item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #ffffff;
+	height: 15vh;
+	background-color: transparent;
+}
 .container-sport {
 	display: flex;
 	flex-direction: row;
@@ -289,7 +312,6 @@ button:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 33.33%;
 }
 
 .container-sport {
