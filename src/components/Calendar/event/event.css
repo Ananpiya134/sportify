@@ -1,0 +1,23 @@
+.card {
+  box-shadow: 3px 3px 10px rgb(128, 127, 127);
+  border-radius: 20px;
+  background: white !important;
+  margin: 10px 0px 10px 0px;
+}
+
+.text-cd {
+  color: gray;
+}
+
+.card-body h3 {
+  text-align: center;
+  margin: 15px 0px 25px 0px;
+  color: black;
+
+  font-weight: 200;
+}
+
+.line-card {
+  color: black;
+  margin-top: 20px;
+}

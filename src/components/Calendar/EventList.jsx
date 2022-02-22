@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import CalendarDetail from "./CalendarDetail";
+import Event from "./event/Event";
 
-// function EventList({ data }) {
-// function EventList({ data }) {
-function EventList({ event }) {
-  console.log(event);
+function EventList({ events }) {
+  console.log(events);
   // const [startDate, setStartDate] = useState(new Date());
   //   console.log(startDate);
 
   return (
     <>
-      {/* <div className="event-calendar" style={{ padding: "10px" }}>
+      {/* {events && events.map((item) => <Event />)} */}
+      {/* <div classNameName="event-calendar" style={{ padding: "10px" }}>
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -24,12 +21,10 @@ function EventList({ event }) {
         />
       </div> */}
       {/* {JSON.stringify(data[0].date)} */}
-      {/* 
-      {event.map((item) => (
-        <div key={item.id} className="col-md-6">
-          <CalendarDetail data={item} />
-        </div>
-      ))} */}
+
+      {events.map((item) => (
+        <Event key={item.id} data={item} />
+      ))}
     </>
   );
 }

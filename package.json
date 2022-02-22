@@ -19,8 +19,10 @@
     "react-calendar": "^3.7.0",
     "react-datepicker": "^4.6.0",
     "react-dom": "^17.0.2",
+    "react-geocode": "^0.2.3",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.3.1",
+    "react-multi-date-picker": "^3.3.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "Utils": "^1.0.39",
@@ -28,7 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "https=true react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
