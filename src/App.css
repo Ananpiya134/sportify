@@ -147,9 +147,15 @@ button:hover {
   height: 844px;
 }
 .main_body {
+<<<<<<< HEAD
   /* background-image: url("./public/image/map.jpeg"); */
   width: 390vw;
   height: 766px;
+=======
+	/* background-image: url("./public/image/map.jpeg"); */
+	width: 100vw;
+	height: 95vh;
+>>>>>>> google_map_test
 }
 
 .nav_body {
@@ -169,8 +175,13 @@ button:hover {
   background-color: #141414;
 }
 .Nav {
+<<<<<<< HEAD
   position: absolute;
   bottom: 0;
+=======
+	position: fixed;
+	bottom: 0;
+>>>>>>> google_map_test
 }
 
 .filter_btn {
@@ -368,4 +379,8 @@ svg {
 
 .p-friend {
   width: 33%;
+}
+
+.google_btn * {
+	color: black;
 }
