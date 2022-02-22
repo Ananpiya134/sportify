@@ -10,7 +10,6 @@ function HomePage() {
 			<MainBody />
 			<FilterButton />
 			<EventItem />
-			<NavBar />
 		</div>
 	);
 }
