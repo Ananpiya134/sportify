@@ -9,26 +9,28 @@ import LandingPage from "../pages/LandingPage";
 import PublicLayout from "../components/layout/PublicLayout";
 import CreateEvent from "../components/CreateEvent/CreateEvent";
 import { AuthContext } from "../contexts/AuthContext";
+import TestCalendar from "../pages/TestCalendar";
 
 function RouteConfig() {
-	const { user } = useContext(AuthContext);
-	return (
-		<Routes>
-			{/* {user ? ( */}
-			<Route path="/" element={<MainLayout />}>
-				<Route path="" element={<HomePage />} />
-				<Route path="*" element={<Navigate to="/" />} />
-				<Route path="create-event" element={<CreateEvent />} />
-			</Route>
-			{/* ) : (
+  const { user } = useContext(AuthContext);
+  return (
+    <Routes>
+      {/* {user ? ( */}
+      <Route path="/test" element={<TestCalendar />} />
+      <Route path="/" element={<MainLayout />}>
+        <Route path="" element={<HomePage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="create-event" element={<CreateEvent />} />
+      </Route>
+      {/* ) : (
 				<Route path="/" element={<PublicLayout />}>
 					<Route path="login" element={<LoginForm />} />
 					<Route path="register" element={<RegisterForm />} />
 					<Route path="" element={<LandingPage />} />
 				</Route>
 			)} */}
-		</Routes>
-	);
+    </Routes>
+  );
 }
 
 export default RouteConfig;
