@@ -6,8 +6,6 @@ function CalendarDetail({ data }) {
   let timeStart = data.timeStart.split("T")[1].split(".")[0];
   let timeEnd = data.timeEnd.split("T")[1].split(".")[0];
 
-  // formatTime(new Date(event.startTime)) => string
-
   return (
     <div className="d-flex justify-content-center">
       <div className="card bg-secondary" style={{ width: "20rem" }}>
