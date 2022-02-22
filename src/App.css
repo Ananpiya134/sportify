@@ -149,8 +149,12 @@ button:hover {
 .main_body {
   /* background-image: url("./public/image/map.jpeg"); */
   width: 100vw;
-  height: 95vh;
+  height: calc(100vh - 77px);
 }
+
+/* .main-layout-conatiner {
+  min-height: calc(100vh - 77px);
+} */
 
 .nav_body {
   background-color: #141414;

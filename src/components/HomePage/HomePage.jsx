@@ -72,7 +72,7 @@ function HomePage() {
   }, [userLocation, id]);
 
   return (
-    <div className={``} style={{ width: "390px", height: "844px" }}>
+    <div className={`homepage`}>
       <MainBody eventData={eventData} />
       <FilterButton />
       <EventItem
@@ -82,7 +82,6 @@ function HomePage() {
         targetLocation={targetLocation}
         targetDistance={targetDistance}
       />
-      <NavBar />
     </div>
   );
 }

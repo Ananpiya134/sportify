@@ -8,20 +8,28 @@ function MainBody({ eventData }) {
     lat: Number(eventData.locationLat),
     lng: Number(eventData.locationLng),
   };
+  console.log(eventData);
+
+  const center = {
+    lat: Number(eventData.locationLat) - 0.005,
+    lng: Number(eventData.locationLng),
+  };
 
   return (
     <div className={`main_body`}>
       <GoogleMapReact
         defaultCenter={coordinates}
-        center={coordinates}
+        center={center}
         defaultZoom={14}
         bootstrapURLKeys={{ key: GOOGLE_MAP_API }}
       >
         <div
-          style={{
-            position: "absolute",
-            transform: "translate(-50%, 50%)",
-          }}
+          // style={{
+          //   position: "absolute",
+          //   transform: "translate(-50%, 50%)",
+          // }}
+          lat={coordinates.lat}
+          lng={coordinates.lng}
         >
           <i
             className={`fa-solid fa-location-dot text-black`}
