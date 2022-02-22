@@ -148,13 +148,17 @@ button:hover {
 }
 .main_body {
   /* background-image: url("./public/image/map.jpeg"); */
-  width: 390vw;
-  height: 766px;
+  width: 100vw;
+  height: 95vh;
 }
 
 .nav_body {
   background-color: #141414;
   width: 100vw;
+  height: 77px;
+}
+
+.under_nav {
   height: 77px;
 }
 
@@ -169,7 +173,7 @@ button:hover {
   background-color: #141414;
 }
 .Nav {
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 
@@ -368,4 +372,14 @@ svg {
 
 .p-friend {
   width: 33%;
+}
+
+.google_btn * {
+  color: black;
+}
+
+/* calendar */
+
+.event-calendar-container {
+  margin: 20px 0;
 }

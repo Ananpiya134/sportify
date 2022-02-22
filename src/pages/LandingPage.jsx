@@ -1,11 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../config/axios";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
+import GoogleLogin from "react-google-login";
+import { REACT_GOOGLE_CLIENT_ID } from "../config/env";
 
 function LandingPage() {
+	const [loginData, setLoginData] = useState(
+		localStorage.getItem("loginData")
+			? JSON.parse(localStorage.getItem("loginData"))
+			: null
+	);
+
 	const navigate = useNavigate();
+
+	const handleLogin = async (googleData) => {
+		const res = await fetch("/api/google-login", {
+			method: "POST",
+			body: JSON.stringify({
+				token: googleData.tokenId,
+			}),
+			header: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		const data = await res.json();
+		setLoginData(data);
+		localStorage.setItem("loginData", JSON.stringify(data));
+		console.log(googleData);
+	};
+
+	const handleLogout = () => {
+		localStorage.removeItem("loginData");
+		setLoginData(null);
+	};
+
+	const handleFailure = (res) => {
+		alert(res);
+	};
 	return (
 		<div className={`d-flex flex-column align-items-center`}>
 			<div style={{ marginTop: "69px" }}>
@@ -49,12 +83,31 @@ function LandingPage() {
 					Continue With Facebook
 				</button>
 			</div>
-			<div style={{ marginTop: "30px" }}>
+
+			{/* google login component */}
+
+			{loginData ? (
+				<div>
+					<h3> you log in as {loginData.email}</h3>
+					<button onClick={handleLogout}>Logout</button>
+				</div>
+			) : (
+				<GoogleLogin
+					clientId={REACT_GOOGLE_CLIENT_ID}
+					className={`google_btn`}
+					buttonText="Continue with Google"
+					onSuccess={handleLogin}
+					onFailure={handleFailure}
+					cookiePolicy={"single_host_origin"}
+				></GoogleLogin>
+			)}
+
+			{/* <div style={{ marginTop: "30px" }}>
 				<button className="button-google" type="button">
 					<FcGoogle style={{ width: "50px" }} />
 					Continue With Google
 				</button>
-			</div>
+			</div> */}
 		</div>
 	);
 }

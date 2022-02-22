@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { Calendar } from "react-multi-date-picker";
 import "react-multi-date-picker/styles/colors/teal.css";
 import "react-multi-date-picker/styles/backgrounds/bg-gray.css";
+import "react-multi-date-picker/styles/layouts/mobile.css";
 import EventList from "../Calendar/EventList";
 import axios from "../../config/axios";
 import { useParams } from "react-router-dom";
@@ -46,10 +47,10 @@ function EventCalendar() {
     result &&
     result.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
-  console.log(result);
+  console.log(result, sorted);
 
   return (
-    <div>
+    <div className="event-calendar-container">
       <div className="d-flex justify-content-center">
         <div className="mx-1">
           <button
@@ -71,46 +72,48 @@ function EventCalendar() {
         </div>
       </div>
       {show === "CALENDAR" && (
-        <Calendar
-          className="teal bg-dark"
-          mapDays={({
-            date,
-            today,
-            selectedDate,
-            isSameDate,
-            currentMonth,
-          }) => {
-            let props = {};
-            eventDates.forEach((d) => {
-              if (currentMonth.index === d.getMonth()) {
-                if (date.day === d.getDate()) {
-                  props.style = {
-                    backgroundColor: "#126ba6",
-                    // backgroundColor: "#12a688",
-                  };
+        <div className="d-flex justify-content-center">
+          <Calendar
+            className="teal bg-dark mobile"
+            mapDays={({
+              date,
+              today,
+              selectedDate,
+              isSameDate,
+              currentMonth,
+            }) => {
+              let props = {};
+              eventDates.forEach((d) => {
+                if (currentMonth.index === d.getMonth()) {
+                  if (date.day === d.getDate()) {
+                    props.style = {
+                      backgroundColor: "#126ba6",
+                      // backgroundColor: "#12a688",
+                    };
+                  }
                 }
-              }
-            });
-            hostedEventDates.forEach((d) => {
-              if (currentMonth.index === d.getMonth()) {
-                if (date.day === d.getDate()) {
-                  props.style = {
-                    backgroundColor: "#a61275",
-                  };
+              });
+              hostedEventDates.forEach((d) => {
+                if (currentMonth.index === d.getMonth()) {
+                  if (date.day === d.getDate()) {
+                    props.style = {
+                      backgroundColor: "#a61275",
+                    };
+                  }
                 }
-              }
-            });
+              });
 
-            if (isSameDate(date, selectedDate)) {
-              props.style = {
-                backgroundColor: "#888",
-              };
-            }
-            return props;
-          }}
-          value={selectedDate}
-          onChange={(d) => setSelectedDate(new Date(d))}
-        />
+              if (isSameDate(date, selectedDate)) {
+                props.style = {
+                  backgroundColor: "#888",
+                };
+              }
+              return props;
+            }}
+            value={selectedDate}
+            onChange={(d) => setSelectedDate(new Date(d))}
+          />
+        </div>
       )}
 
       <EventList events={sorted} />
