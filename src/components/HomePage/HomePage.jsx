@@ -57,6 +57,7 @@ function HomePage() {
 
 	// set target distance onChanging of event item
 	useEffect(() => {
+		setEventData(data[id]);
 		if (userLocation !== {} && targetLocation !== null) {
 			const calculatedDistance = calculateDistance(
 				userLocation,
