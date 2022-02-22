@@ -8,27 +8,29 @@ import RegisterForm from "../components/auth/RegisterForm";
 import LandingPage from "../pages/LandingPage";
 import PublicLayout from "../components/layout/PublicLayout";
 import CreateEvent from "../components/CreateEvent/CreateEvent";
+import Profile from "../components/Profile";
 import { AuthContext } from "../contexts/AuthContext";
 
 function RouteConfig() {
-	const { user } = useContext(AuthContext);
-	return (
-		<Routes>
-			{/* {user ? ( */}
-			<Route path="/" element={<MainLayout />}>
-				<Route path="" element={<HomePage />} />
-				<Route path="*" element={<Navigate to="/" />} />
-				<Route path="create-event" element={<CreateEvent />} />
-			</Route>
-			{/* ) : (
+  const { user } = useContext(AuthContext);
+  return (
+    <Routes>
+      {/* {user ? ( */}
+      <Route path="/" element={<MainLayout />}>
+        <Route path="" element={<HomePage />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="create-event" element={<CreateEvent />} />
+      </Route>
+      {/* ) : (
 				<Route path="/" element={<PublicLayout />}>
 					<Route path="login" element={<LoginForm />} />
 					<Route path="register" element={<RegisterForm />} />
 					<Route path="" element={<LandingPage />} />
 				</Route>
 			)} */}
-		</Routes>
-	);
+    </Routes>
+  );
 }
 
 export default RouteConfig;
