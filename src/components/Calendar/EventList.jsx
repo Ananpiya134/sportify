@@ -4,13 +4,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import CalendarDetail from "./CalendarDetail";
 
-function EventList({ data }) {
-  const [startDate, setStartDate] = useState(new Date());
+// function EventList({ data }) {
+// function EventList({ data }) {
+function EventList({ event }) {
+  console.log(event);
+  // const [startDate, setStartDate] = useState(new Date());
   //   console.log(startDate);
 
   return (
     <>
-      <div className="event-calendar" style={{ padding: "10px" }}>
+      {/* <div className="event-calendar" style={{ padding: "10px" }}>
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -19,11 +22,13 @@ function EventList({ data }) {
           //   highlightDates={[new Date("2022-01-21")]}
           highlightDates={startDate}
         />
-      </div>
+      </div> */}
       {/* {JSON.stringify(data[0].date)} */}
 
-      {data.map((item) => (
-        <CalendarDetail data={item} />
+      {event.map((item) => (
+        <div key={item.id} className="col-md-6">
+          <CalendarDetail data={item} />
+        </div>
       ))}
     </>
   );

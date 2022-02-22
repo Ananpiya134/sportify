@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "../services/localStorage";
 
-axios.defaults.baseURL = "http://localhost:8002";
+axios.defaults.baseURL = "http://localhost:8000";
 
 axios.interceptors.request.use(
   (config) => {

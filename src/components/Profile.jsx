@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "../config/axios";
 import { FcOk } from "react-icons/fc";
 
 function Profile() {
+  const [event, setEvent] = useState([{}]);
+  useEffect(() => {
+    axios
+      .get(`/users/${1}/events`)
+
+      .then((res) => {
+        console.log(event);
+        setEvent(res.data.event); // set new state
+        console.log(res.data.event);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <div className="profile_image_profile">

@@ -4,13 +4,11 @@ function CalendarDetail({ data }) {
   //   console.log(data);
   return (
     <>
-      <div className="calendar-detail">
-        <p>{data.title}</p>
-        <p>{data.date}</p>
-      </div>
-      <hr />
-      <div className="event-detail">
-        <p>{data.detail}</p>
+      <div>
+        <p>Event: {data.title}</p>
+        <p>{data.timeStart}</p>
+        <p>Location : {data.locationLat}</p>
+        <p> Level: {data.detail}</p>
       </div>
     </>
   );
