@@ -25,19 +25,14 @@ h4 {
 p {
   font: 20px;
   color: white;
-  margin-left: 0px;
-  margin-top: 15px;
 }
+
 a {
   font: 20px;
   color: white;
   margin-left: 0px;
   margin-top: 15px;
   text-decoration: none;
-}
-hr {
-  height: 5px;
-  margin: 0px;
 }
 
 form {
@@ -258,16 +253,6 @@ button:hover {
 }
 .event_detail_location {
   color: #000000;
-}
-
-.event_stats {
-  background-color: #c4c4c4;
-  width: 390px;
-  height: 79px;
-}
-
-.event_stats_element {
-  background-color: #c4c4c4;
 }
 
 .event_detail_map {
