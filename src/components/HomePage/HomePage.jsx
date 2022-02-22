@@ -71,9 +71,6 @@ function HomePage() {
 		<div className={``} style={{ width: "390px", height: "844px" }}>
 			<MainBody eventData={eventData} />
 			<FilterButton />
-<<<<<<< HEAD
-			<EventItem />
-=======
 			<EventItem
 				id={id}
 				setId={setId}
@@ -81,7 +78,6 @@ function HomePage() {
 				targetDistance={targetDistance}
 			/>
 			<NavBar />
->>>>>>> google_map_test
 		</div>
 	);
 }
