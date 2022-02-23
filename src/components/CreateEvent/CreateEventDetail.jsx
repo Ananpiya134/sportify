@@ -140,7 +140,6 @@ function CreateEventDetail() {
             className={`add_btn rounded-2 w-50`}
             style={{ fontSize: "1rem" }}
           >
-            {" "}
             Create Event
           </button>
         </div>
