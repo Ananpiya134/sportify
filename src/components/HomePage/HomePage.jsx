@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import "../../App.css";
 import MainBody from "./MainBody";
-import NavBar from "../layout/NavBar";
 import FilterButton from "./FilterButton";
 import EventItem from "./EventItem";
-import { data } from "../../dbs/testLogic";
 import { getPreciseDistance } from "geolib";
+<<<<<<< Updated upstream
 import axios from "../../config/axios";
 import { EventContext } from "../../contexts/EventContext";
 
@@ -81,6 +80,58 @@ function HomePage() {
 				id={id}
 				setId={setId}
 				eventData={eventData}
+=======
+import { EventContext } from "../../contexts/EventContext";
+
+function HomePage() {
+	const { allEvent, userLocation } = useContext(EventContext);
+
+	const [eventIndex, setEventIndex] = useState(0);
+	const [currentEvent, setCurrentEvent] = useState(allEvent[0]);
+	const [targetLocation, setTargetLocation] = useState(null);
+	const [targetDistance, setTargetDistance] = useState(null);
+
+	// set target distance onChanging of event item
+	useEffect(() => {
+		setCurrentEvent(allEvent[eventIndex]);
+		setTargetLocation({
+			latitude: currentEvent.locationLat,
+			longitude: currentEvent.locationLng,
+		});
+		if (userLocation !== {} && targetLocation !== null) {
+			const calculatedDistance = calculateDistance(
+				userLocation,
+				targetLocation
+			);
+			setTargetDistance((calculatedDistance / 1000).toFixed(2));
+		}
+	}, [userLocation, eventIndex]);
+
+	// calculate distance between user's location and event's location
+	function calculateDistance(startPoint, endPoint) {
+		if (!startPoint && !endPoint) return;
+		const distance = getPreciseDistance(
+			{
+				latitude: startPoint.latitude,
+				longitude: startPoint.longitude,
+			},
+			{
+				latitude: endPoint.latitude,
+				longitude: endPoint.longitude,
+			}
+		);
+
+		return distance;
+	}
+	return (
+		<div className={`homepage`}>
+			{/* <MainBody currentEvent={currentEvent} /> */}
+			<FilterButton />
+			<EventItem
+				eventIndex={eventIndex}
+				setEventIndex={setEventIndex}
+				currentEvent={currentEvent}
+>>>>>>> Stashed changes
 				targetLocation={targetLocation}
 				targetDistance={targetDistance}
 			/>

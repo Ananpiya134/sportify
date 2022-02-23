@@ -3,15 +3,15 @@ import { useEffect, useState } from "react";
 import { GOOGLE_MAP_API } from "../../config/env";
 import { getLocName } from "../../utils/getLocName";
 
-function MainBody({ eventData }) {
+function MainBody({ currentEvent }) {
 	const coordinates = {
-		lat: Number(eventData.locationLat),
-		lng: Number(eventData.locationLng),
+		lat: Number(currentEvent.locationLat),
+		lng: Number(currentEvent.locationLng),
 	};
 
 	const center = {
-		lat: Number(eventData.locationLat) - 0.005,
-		lng: Number(eventData.locationLng),
+		lat: Number(currentEvent.locationLat) - 0.005,
+		lng: Number(currentEvent.locationLng),
 	};
 
 	return (
