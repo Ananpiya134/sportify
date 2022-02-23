@@ -8,13 +8,10 @@ function AuthContextProvider({ children }) {
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
-		console.log("effect eun");
-		console.log(getToken());
 		if (getToken()) {
 			axios
 				.post(`/auth`)
 				.then((res) => {
-					console.log(res.data);
 					setUser(res.data.user);
 				})
 				.catch((err) => console.log(err));
