@@ -5,29 +5,6 @@ import axios from "../config/axios";
 const EventContext = createContext();
 
 function EventContextProvider({ children }) {
-<<<<<<< Updated upstream
-	const [allEvent, setAllEvent] = useState([]);
-	const [currentEvent, setCurrentEvent] = useState(null);
-	const [eventIndex, setCurrentIndex] = useState(0);
-
-	useEffect(() => {
-		const fetchEvent = async () => {
-			const res = await axios.get("/events");
-			setAllEvent(res.data);
-			setCurrentEvent(res.data.events[0]);
-		};
-		fetchEvent();
-	}, []);
-
-	useEffect(() => {
-		if (currentEvent !== null) setCurrentEvent(allEvent[eventIndex]);
-	}, [allEvent]);
-
-	console.log(allEvent);
-	console.log(currentEvent);
-
-	return <EventContext.Provider value={{}}>{children}</EventContext.Provider>;
-=======
 	const [allEvent, setAllEvent] = useState([]); // all event from database
 	const [currentEvent, setCurrentEvent] = useState(null);
 	const [userLocation, setUserLocation] = useState({
@@ -40,7 +17,7 @@ function EventContextProvider({ children }) {
 		const fetchEvent = async () => {
 			try {
 				const res = await axios.get("/events");
-				setAllEvent(res.data);
+				setAllEvent(res.data.events);
 			} catch (err) {
 				console.log(err);
 			}
@@ -62,14 +39,11 @@ function EventContextProvider({ children }) {
 			}
 		});
 	}, []);
-
-	console.log(allEvent);
 	return (
 		<EventContext.Provider value={{ allEvent, userLocation }}>
 			{children}
 		</EventContext.Provider>
 	);
->>>>>>> Stashed changes
 }
 export default EventContextProvider;
 

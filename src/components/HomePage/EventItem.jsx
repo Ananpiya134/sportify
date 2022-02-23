@@ -35,18 +35,18 @@ function EventItem({
 						<div className={`mt-3 mx-2`}>
 							<h3 className={`event_thumbnail_title text-black`}>
 								{/* title */}
-								{/* {currentEvent.title} */}
+								{currentEvent.title}
 							</h3>
 							<p>{locName && locName.substr(0, 40) + "..."}</p>
 							<p className={`b-text`}>
 								date:
-								{/* <span className="text-black">{currentEvent.date}</span>
-								<span className="text-black">{currentEvent.timeStart}</span> */}
+								<span className="text-black">{currentEvent.date}</span>
+								<span className="text-black">{currentEvent.timeStart}</span>
 								<span className="text-black"> P.M.</span>
 							</p>
 							<p className={`b-text mt-4`}>
 								{/* target distance */}
-								{/* {targetDistance}  */}
+								{targetDistance}
 								k.m.
 							</p>
 						</div>
