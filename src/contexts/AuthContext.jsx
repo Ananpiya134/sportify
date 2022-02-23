@@ -8,23 +8,28 @@ function AuthContextProvider({ children }) {
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
+		console.log("effect eun");
+		console.log(getToken());
 		if (getToken()) {
 			axios
-				.get(`/users/${user.id}`)
-				.then((res) => setUser(res.data.user))
+				.post(`/auth`)
+				.then((res) => {
+					console.log(res.data);
+					setUser(res.data.user);
+				})
 				.catch((err) => console.log(err));
 		}
 	}, []);
 
 	const login = async (email, password) => {
 		try {
-			const res = await axios.post("/users/login", {
-				emailLogin: email,
-				password: password,
+			const res = await axios.post("/auth/login", {
+				email,
+				password,
 			});
-			console.log(res.data);
 			setToken(res.data.token);
 			setUser(res.data.user);
+			console.log(res.data.user);
 		} catch (err) {
 			console.log(err.message);
 		}

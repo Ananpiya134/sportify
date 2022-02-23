@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../../config/axios";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function LoginForm() {
+	const { user, login } = useContext(AuthContext);
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const handleSubmitLogin = (e) => {
 		e.preventDefault();
-		console.table({
-			// login(email, password);
-			email,
-			password,
-		});
+		login(email, password);
 	};
 
 	return (

@@ -86,21 +86,14 @@ function LandingPage() {
 
 			{/* google login component */}
 
-			{loginData ? (
-				<div>
-					<h3> you log in as {loginData.email}</h3>
-					<button onClick={handleLogout}>Logout</button>
-				</div>
-			) : (
-				<GoogleLogin
-					clientId={REACT_GOOGLE_CLIENT_ID}
-					className={`google_btn`}
-					buttonText="Continue with Google"
-					onSuccess={handleLogin}
-					onFailure={handleFailure}
-					cookiePolicy={"single_host_origin"}
-				></GoogleLogin>
-			)}
+			<GoogleLogin
+				clientId={REACT_GOOGLE_CLIENT_ID}
+				className={`google_btn`}
+				buttonText="Continue with Google"
+				onSuccess={handleLogin}
+				onFailure={handleFailure}
+				cookiePolicy={"single_host_origin"}
+			></GoogleLogin>
 
 			{/* <div style={{ marginTop: "30px" }}>
 				<button className="button-google" type="button">
