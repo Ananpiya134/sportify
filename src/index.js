@@ -6,17 +6,20 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import ErrorContextProvider from "./contexts/ErrorContext";
 import AuthContextProvider from "./contexts/AuthContext";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<AuthContextProvider>
-				<App />
-			</AuthContextProvider>
-		</BrowserRouter>
-	</React.StrictMode>,
-	document.getElementById("root")
+  <React.StrictMode>
+    <BrowserRouter>
+      <ErrorContextProvider>
+        <AuthContextProvider>
+          <App />
+        </AuthContextProvider>
+      </ErrorContextProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
