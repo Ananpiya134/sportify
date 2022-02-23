@@ -7,12 +7,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./contexts/AuthContext";
+import EventContextProvider from "./contexts/EventContext";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<AuthContextProvider>
-				<App />
+				<EventContextProvider>
+					<App />
+				</EventContextProvider>
 			</AuthContextProvider>
 		</BrowserRouter>
 	</React.StrictMode>,

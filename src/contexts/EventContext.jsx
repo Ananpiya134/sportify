@@ -3,16 +3,21 @@ import axios from "../config/axios";
 
 const EventContext = createContext();
 
-function EventContextProvider() {
-	const [event, setEvent] = useState(null);
+function EventContextProvider({ children }) {
+	const [allEvent, setAllEvent] = useState([]);
 
 	useEffect(() => {
-		const res = axios
-			.get("/events/")
-			.then((res) => setEvent(res.data.events))
-			.catch((err) => console.log(err));
+		const fetchEvent = async () => {
+			const res = await axios.get("/events");
+			setAllEvent(res.data);
+		};
+		fetchEvent();
 	}, []);
 
-	return <EventContext.Provider>{children}</EventContext.Provider>;
+	console.log(allEvent);
+
+	return <EventContext.Provider value={{}}>{children}</EventContext.Provider>;
 }
 export default EventContextProvider;
+
+export { EventContext };
