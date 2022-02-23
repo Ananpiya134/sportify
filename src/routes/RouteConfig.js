@@ -26,13 +26,13 @@ function RouteConfig() {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="create-event" element={<CreateEvent />} />
       </Route>
-      {/* ) : (
-				<Route path="/" element={<PublicLayout />}>
-					<Route path="login" element={<LoginForm />} />
-					<Route path="register" element={<RegisterForm />} />
-					<Route path="" element={<LandingPage />} />
-				</Route>
-			)} */}
+      ) : (
+      <Route path="/" element={<PublicLayout />}>
+        <Route path="login" element={<LoginForm />} />
+        <Route path="register" element={<RegisterForm />} />
+        <Route path="/landing" element={<LandingPage />} />
+      </Route>
+      )
     </Routes>
   );
 }
