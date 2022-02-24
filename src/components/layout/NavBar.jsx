@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import "../../App.css";
 
 function NavBar() {
+  const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   return (
@@ -28,14 +31,11 @@ function NavBar() {
           />
         </button>
 
-        {/* message button */}
-        <button className={`btn`}>
-          <i className={`fa-solid fa-message nav_btn`} />
-        </button>
-
-        {/* profile setting button */}
         <button className={`btn`}>
           <i className={`fa-solid fa-user nav_btn`} />
+        </button>
+        <button className={`btn`} onClick={() => logout()}>
+          <i className={`fa-solid fa-right-from-bracket nav_btn`} />
         </button>
       </div>
     </div>
