@@ -1,11 +1,14 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import axios from "../config/axios";
 import { clearToken, setToken, getToken } from "../services/localStorage";
+
+import { ErrorContext } from "../contexts/ErrorContext";
 
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
+  const { setError } = useContext(ErrorContext);
 
   useEffect(() => {
     // console.log("effect eun");
@@ -23,6 +26,7 @@ function AuthContextProvider({ children }) {
 
   const login = async (email, password) => {
     try {
+      setError("");
       const res = await axios.post("/auth/login", {
         email,
         password,
@@ -32,6 +36,7 @@ function AuthContextProvider({ children }) {
       console.log(res.data.user);
     } catch (err) {
       console.log(err.message);
+      setError(err.response.data.message);
     }
   };
 

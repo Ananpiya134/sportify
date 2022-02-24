@@ -5,12 +5,10 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 import validator from "validator";
 import { ErrorContext } from "../../contexts/ErrorContext";
-import { ToastContext } from "../../contexts/ToastContext";
 
 function LoginForm() {
   const { login } = useContext(AuthContext);
   const { setError } = useContext(ErrorContext);
-  const { setMessage } = useContext(ToastContext);
 
   const navigate = useNavigate();
 
