@@ -8,14 +8,17 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import ErrorContextProvider from "./contexts/ErrorContext";
 import AuthContextProvider from "./contexts/AuthContext";
+import ToastContextProvider from "./contexts/ToastContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ErrorContextProvider>
-        <AuthContextProvider>
-          <App />
-        </AuthContextProvider>
+        <ToastContextProvider>
+          <AuthContextProvider>
+            <App />
+          </AuthContextProvider>
+        </ToastContextProvider>
       </ErrorContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
+
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
 import { ErrorContext } from "../../contexts/ErrorContext";
+import { ToastContext } from "../../contexts/ToastContext";
 
 function RegisterForm() {
   const [firstName, setFirstName] = useState("");
@@ -14,13 +17,50 @@ function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const { setError } = useContext(ErrorContext);
+  const { setMessage } = useContext(ToastContext);
 
   const navigate = useNavigate();
 
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
+    setError("");
+
+    if (!validator.isAlpha(firstName, "en-US", { ignore: "_-" })) {
+      console.log("Firstname must be characters");
+      return setError(
+        "First name must be characters; underscore allowed; whitespace not allowed"
+      );
+    }
+    if (!validator.isAlpha(lastName, "en-US", { ignore: "_-" })) {
+      console.log("Lastname must be characters");
+      return setError(
+        "Last name must be characters; underscore allowed; whitespace not allowed"
+      );
+    }
+
+    if (!validator.isEmail(email)) {
+      setMessage("Invalid email");
+      return setError("Invalid e-mail address. Please try again ");
+    }
+    if (!validator.isMobilePhone(phoneNumber, "th-TH")) {
+      console.log("Invalid phone number");
+      return setError("Invalid phone number");
+    }
+
+    if (validator.isEmpty(password) || password.includes(" ")) {
+      console.log("Password can't be empty, whitespace not allowed");
+      return setError("Password can't be empty, whitespace not allowed");
+    }
+    if (password.length < 6) {
+      console.log("Password is too short.Please enter more");
+      return setError("Password should be more than 6 characters");
+    }
+    if (!validator.equals(password, confirmPassword)) {
+      console.log("Passwords did not match");
+      return setError("Passwords did not match");
+    }
+
     try {
-      setError("");
       const res = await axios.post("/auth/register", {
         firstName,
         lastName,
@@ -30,6 +70,7 @@ function RegisterForm() {
         confirmPassword,
         gender,
       });
+      setMessage("Registration Successful, Please Login");
       navigate("/");
     } catch (err) {
       setError(err.response.data.message);

@@ -1,46 +1,41 @@
 import RouteConfig from "./routes/RouteConfig";
+import { toast, ToastContainer } from "react-toastify";
 import { useContext } from "react";
 import { ErrorContext } from "./contexts/ErrorContext";
-import { useRef, useEffect } from "react";
-import { Toast } from "bootstrap";
+import { useEffect } from "react";
+
+import { ToastContext } from "./contexts/ToastContext";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
 
 function App() {
-  const { error } = useContext(ErrorContext);
-
-  const toastEl = useRef();
-
+  const { error, setError } = useContext(ErrorContext);
+  const { message, setMessage } = useContext(ToastContext);
   useEffect(() => {
-    if (error) {
-      const toast = new Toast(toastEl.current);
-      toast.show();
+    if (error && error !== "") {
+      toast.error(error);
+      return setError("");
     }
   }, [error]);
+  useEffect(() => {
+    if (message && message !== "") {
+      return setMessage("");
+    }
+  }, [message]);
   return (
     <>
-      <div
-        className="toast-container position-absolute p-3 start-50 bottom-0 translate-middle-x"
-        id="toastPlacement"
-      >
-        <div
-          className="toast
-          align-items-center
-          text-white
-          bg-danger
-          border-0"
-          ref={toastEl}
-        >
-          <div className="d-flex">
-            <div className="toast-body ">{error}</div>
-            <button
-              type="button"
-              className="btn-close btn-close-white me-2 m-auto"
-              data-bs-dismiss="toast"
-            ></button>
-          </div>
-        </div>
-      </div>
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <RouteConfig />
     </>
   );
