@@ -18,11 +18,13 @@ function App() {
       return setError("");
     }
   }, [error]);
+
   useEffect(() => {
     if (message && message !== "") {
       return setMessage("");
     }
   }, [message]);
+
   return (
     <>
       <ToastContainer
