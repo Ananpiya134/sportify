@@ -17,23 +17,23 @@ function RouteConfig() {
   const { user } = useContext(AuthContext);
   return (
     <Routes>
-      {/* {user ? ( */}
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/events" element={<EventCalendar />} />
-        <Route path="/create-event" element={<CreateEvent />} />
-        <Route path="/events/:id" element={<EventDetail />} />
+      {user ? (
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/events" element={<EventCalendar />} />
+          <Route path="/create-event" element={<CreateEvent />} />
+          <Route path="/events/:id" element={<EventDetail />} />
 
-        <Route path="*" element={<Navigate to="/" />} />
-      </Route>
-      {/* ) : ( */}
-      {/* <Route path="/" element={<PublicLayout />}>
-				<Route path="login" element={<LoginForm />} />
-				<Route path="register" element={<RegisterForm />} />
-				<Route path="" element={<LandingPage />} />
-			</Route> */}
-      {/* )}  */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Route>
+      ) : (
+        <Route path="/" element={<PublicLayout />}>
+          <Route path="login" element={<LoginForm />} />
+          <Route path="register" element={<RegisterForm />} />
+          <Route path="" element={<LandingPage />} />
+        </Route>
+      )}
     </Routes>
   );
 }

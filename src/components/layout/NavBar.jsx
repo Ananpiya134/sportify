@@ -13,7 +13,7 @@ function NavBar() {
         </button>
 
         {/* calendar button */}
-        <button className={`btn`} onClick={() => navigate("/events")}>
+        <button className={`btn`} onClick={() => navigate("/calendar")}>
           <i className={`fa-solid fa-calendar-days nav_btn`} />
         </button>
 
@@ -34,7 +34,7 @@ function NavBar() {
         </button>
 
         {/* profile setting button */}
-        <button className={`btn`}>
+        <button className={`btn`} onClick={() => navigate("/Profile")}>
           <i className={`fa-solid fa-user nav_btn`} />
         </button>
       </div>

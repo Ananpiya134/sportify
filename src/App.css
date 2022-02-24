@@ -9,6 +9,16 @@
 }
 
 body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-image: radial-gradient(
+    circle at 0% 0%,
+    #373b52,
+    #252736 51%,
+    #1d1e26
+  );
+  background-color: black;
   background: linear-gradient(
       180deg,
       rgba(35, 37, 38, 1) 0%,
@@ -21,23 +31,20 @@ body {
 
 h4 {
   font: 20px;
+  color: white;
+  /* margin-left: 51px; */
 }
 p {
   font: 20px;
   color: white;
-  margin-left: 0px;
-  margin-top: 15px;
 }
+
 a {
   font: 20px;
   color: white;
   margin-left: 0px;
   margin-top: 15px;
   text-decoration: none;
-}
-hr {
-  height: 5px;
-  margin: 0px;
 }
 
 form {
@@ -55,7 +62,7 @@ label {
   display: block;
   position: relative;
   margin: 0px;
-  color: white;
+  color: #bfd2ff;
   margin-top: 10px;
   padding-block: inherit;
 }
@@ -64,20 +71,91 @@ label {
   top: -1.6em;
   padding: 10px;
   font-family: sans-serif;
-  font-size: 0.8em;
+  font-size: 1em;
   letter-spacing: 1px;
   color: white;
   transition: ease 0.3s;
 }
-.input {
-  width: 100vw;
-  padding: 0px;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: white;
+:root {
+  --input-background: rgba(57, 63, 84, 0.8);
+  --input-text-inactive: #7881a1;
+  --input-text-active: #bfd2ff;
 }
 
+@keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+/* input */
+.input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 5px;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 2px;
+  padding: 1.4rem 2rem 1.6rem;
+  background: --input-background;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  background: linear-gradient(
+    to right,
+    /* #b7b2c4,
+    #687070,
+    #626d60, */ #5e564b,
+    #3d3938,
+    #46403d
+  );
+  background-size: 500% auto;
+  /* animation: gradient 3s linear infinite; */
+}
+
+.create_event_input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 2px;
+  padding: 1.4rem 2rem 1.6rem;
+  background: --input-background;
+}
+
+.create_event_input:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  height: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  background: linear-gradient(
+    to right,
+    #b294ff,
+    #57e6e6,
+    #feffb8,
+    #57e6e6,
+    #b294ff,
+    #57e6e6
+  );
+  background-size: 500% auto;
+  animation: gradient 3s linear infinite;
+}
+/* line */
 .line-box {
   position: relative;
   width: 100%;
@@ -120,7 +198,7 @@ button {
 }
 
 button:hover {
-  background: #34a853;
+  background: #5e564b;
   color: #ffffff;
 }
 
@@ -243,9 +321,11 @@ button:hover {
   line-height: 15px;
 }
 .b-text {
-  color: #000000;
-  font-size: 14px;
+  color: #50c878;
+  font-size: 30px;
   line-height: 0;
+  padding-bottom: 50px;
+  font-family: sans-serif;
 }
 
 .event_detail_image_header {
@@ -262,16 +342,6 @@ button:hover {
 }
 .event_detail_location {
   color: #000000;
-}
-
-.event_stats {
-  background-color: #c4c4c4;
-  width: 390px;
-  height: 79px;
-}
-
-.event_stats_element {
-  background-color: #c4c4c4;
 }
 
 .event_detail_map {
@@ -298,6 +368,28 @@ button:hover {
 
 /* Choose Event */
 
+.filter_item {
+  background-color: #999b9d;
+  font-size: 10px;
+  color: #ffffff;
+  border-radius: 50px;
+}
+
+.filter_item > p {
+  margin: 2px;
+}
+.choose_event_container {
+  width: 95vw;
+  margin: auto;
+}
+.activity_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ffffff;
+  height: 15vh;
+  background-color: transparent;
+}
 .container-sport {
   display: flex;
   flex-direction: row;
@@ -309,7 +401,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 33.33%;
 }
 
 .container-sport {
@@ -356,6 +447,7 @@ svg {
   width: 390px;
   height: 300px;
   display: flex;
+  flex-direction: column;
 }
 
 .profile {
