@@ -21,13 +21,14 @@ function LoginForm() {
     setError("");
 
     if (!validator.isEmail(email)) {
-      console.log("Invalid email format");
-      return setError("Invalid email format");
+      console.log("Incorrect email");
+      return setError("Invalid email ");
     }
     if (validator.isEmpty(password) || password.includes(" ")) {
-      console.log("Password can't be empty, whitespace not allowed");
-      return setError("Password can't be empty, whitespace not allowed");
+      console.log("Incorrect password");
+      return setError("Invalid password");
     }
+
     login(email, password);
   };
 
