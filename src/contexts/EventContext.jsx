@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { getPreciseDistance } from "geolib";
 import axios from "../config/axios";
 
 const EventContext = createContext();
@@ -7,6 +6,7 @@ const EventContext = createContext();
 function EventContextProvider({ children }) {
 	const [allEvent, setAllEvent] = useState([]); // all event from database
 	const [currentEvent, setCurrentEvent] = useState(null);
+	const [eventsLength, setEventsLength] = useState(null);
 	const [userLocation, setUserLocation] = useState({
 		// user current location
 		latitude: 0,
@@ -39,8 +39,12 @@ function EventContextProvider({ children }) {
 			}
 		});
 	}, []);
+
+	useEffect(() => {
+		setEventsLength(allEvent.length);
+	}, [allEvent]);
 	return (
-		<EventContext.Provider value={{ allEvent, userLocation }}>
+		<EventContext.Provider value={{ allEvent, userLocation, eventsLength }}>
 			{children}
 		</EventContext.Provider>
 	);

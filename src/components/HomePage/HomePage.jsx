@@ -48,15 +48,19 @@ function HomePage() {
 	}
 	return (
 		<div className={`homepage`}>
-			<MainBody currentEvent={currentEvent} />
-			<FilterButton />
-			<EventItem
-				eventIndex={eventIndex}
-				setEventIndex={setEventIndex}
-				currentEvent={currentEvent}
-				targetLocation={targetLocation}
-				targetDistance={targetDistance}
-			/>
+			{allEvent && (
+				<>
+					<MainBody currentEvent={currentEvent} />
+					<FilterButton />
+					<EventItem
+						eventIndex={eventIndex}
+						setEventIndex={setEventIndex}
+						currentEvent={currentEvent}
+						targetLocation={targetLocation}
+						targetDistance={targetDistance}
+					/>
+				</>
+			)}
 		</div>
 	);
 }

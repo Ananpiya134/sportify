@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { EventContext } from "../../contexts/EventContext";
 import { getLocName } from "../../utils/getLocName";
 
 function EventItem({
@@ -9,6 +10,7 @@ function EventItem({
 	targetDistance,
 	targetLocation,
 }) {
+	const { eventsLength } = useContext(EventContext);
 	const [locName, setLocName] = useState("");
 
 	useEffect(() => {
@@ -19,13 +21,25 @@ function EventItem({
 		getLoc();
 	}, []);
 
+	const handleClickNext = () => {
+		eventIndex === eventsLength - 1
+			? setEventIndex(0)
+			: setEventIndex(eventIndex + 1);
+	};
+
+	const handleClickPrev = () => {
+		eventIndex === 0
+			? setEventIndex(eventsLength - 1)
+			: setEventIndex(eventIndex - 1);
+	};
+
 	return (
 		<div className="z-index-1100">
 			<div className="event_container">
 				<i
 					className="fa-solid fa-angle-left swipe_btn "
 					style={{ fontSize: "30px" }}
-					onClick={() => setEventIndex(eventIndex - 1)}
+					onClick={handleClickPrev}
 				/>
 
 				{/* event detail box */}
@@ -40,8 +54,10 @@ function EventItem({
 							<p>{locName && locName.substr(0, 40) + "..."}</p>
 							<p className={`b-text`}>
 								date:
-								<span className="text-black">{currentEvent.date}</span>
-								<span className="text-black">{currentEvent.timeStart}</span>
+								<span className="text-black">
+									{new Date(currentEvent.timeStart).toDateString()}
+								</span>
+								{/* <span className="text-black">{currentEvent.timeStart}</span> */}
 								<span className="text-black"> P.M.</span>
 							</p>
 							<p className={`b-text mt-4`}>
@@ -57,7 +73,7 @@ function EventItem({
 				<i
 					className="fa-solid fa-angle-right swipe_btn"
 					style={{ fontSize: "30px" }}
-					onClick={() => setEventIndex(eventIndex + 1)}
+					onClick={handleClickNext}
 				/>
 			</div>
 		</div>
