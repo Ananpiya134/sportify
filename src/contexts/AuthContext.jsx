@@ -9,6 +9,8 @@ import jwtDecode from "jwt-decode";
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
+	const { setError } = useContext(ErrorContext);
+
 	const [user, setUser] = useState(null);
 
 	useEffect(() => {
@@ -24,6 +26,7 @@ function AuthContextProvider({ children }) {
 
 	const login = async (email, password) => {
 		try {
+			setError("");
 			const res = await axios.post("/auth/login", {
 				email,
 				password,
@@ -32,6 +35,7 @@ function AuthContextProvider({ children }) {
 			setUser(res.data.user);
 			console.log(res.data.user);
 		} catch (err) {
+			setError(err.response.data.message);
 			console.log(err.message);
 		}
 	};
