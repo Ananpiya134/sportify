@@ -3,24 +3,20 @@ import axios from "../config/axios";
 import { clearToken, setToken, getToken } from "../services/localStorage";
 
 import { ErrorContext } from "../contexts/ErrorContext";
+import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const AuthContext = createContext();
 
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const { setError } = useContext(ErrorContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // console.log("effect eun");
-    // console.log(getToken());
-    if (getToken()) {
-      axios
-        .post(`/auth`)
-        .then((res) => {
-          console.log(res.data);
-          setUser(res.data.user);
-        })
-        .catch((err) => console.log(err));
+    const token = getToken("token");
+    if (token) {
+      setUser(jwtDecode(token));
     }
   }, []);
 
@@ -43,6 +39,7 @@ function AuthContextProvider({ children }) {
   const logout = () => {
     clearToken();
     setUser(null);
+    navigate("/");
   };
 
   return (

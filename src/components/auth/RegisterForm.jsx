@@ -61,6 +61,14 @@ function RegisterForm() {
     }
 
     try {
+      const formData = new FormData();
+      formData.append("img", img);
+      formData.append("brand", brand);
+      formData.append("model", model);
+      formData.append("pt", pt);
+      formData.append("pd", pd);
+      formData.append("rh", rh);
+
       const res = await axios.post("/auth/register", {
         firstName,
         lastName,
