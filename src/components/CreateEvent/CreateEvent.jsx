@@ -1,15 +1,13 @@
-import CreateEventForm from "./CreateEventForm";
+import CreateEventForm from "./CreateEventDetail";
 import CreateEventHeader from "./CreateEventHeader";
 
 function CreateEvent() {
-
-    return (
-        <>
-            <CreateEventHeader />
-            <CreateEventForm />
-
-        </>
-    );
+	return (
+		<>
+			<CreateEventHeader />
+			<CreateEventForm />
+		</>
+	);
 }
 
 export default CreateEvent;

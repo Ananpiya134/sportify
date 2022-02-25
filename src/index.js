@@ -8,21 +8,24 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import ErrorContextProvider from "./contexts/ErrorContext";
 import AuthContextProvider from "./contexts/AuthContext";
+import EventContextProvider from "./contexts/EventContext";
 import ToastContextProvider from "./contexts/ToastContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ErrorContextProvider>
-        <ToastContextProvider>
-          <AuthContextProvider>
-            <App />
-          </AuthContextProvider>
-        </ToastContextProvider>
-      </ErrorContextProvider>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<BrowserRouter>
+			<ErrorContextProvider>
+				<ToastContextProvider>
+					<AuthContextProvider>
+						<EventContextProvider>
+							<App />
+						</EventContextProvider>
+					</AuthContextProvider>
+				</ToastContextProvider>
+			</ErrorContextProvider>
+		</BrowserRouter>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
