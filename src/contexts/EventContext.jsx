@@ -23,7 +23,7 @@ function EventContextProvider({ children }) {
 			}
 		};
 		fetchEvent();
-		setCurrentEvent(allEvent);
+		// setCurrentEvent(allEvent);
 
 		navigator.geolocation.getCurrentPosition((pos) => {
 			try {

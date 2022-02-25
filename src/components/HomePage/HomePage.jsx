@@ -8,12 +8,10 @@ import { EventContext } from "../../contexts/EventContext";
 
 function HomePage() {
 	const { allEvent, userLocation } = useContext(EventContext);
-
 	const [eventIndex, setEventIndex] = useState(0);
 	const [currentEvent, setCurrentEvent] = useState(allEvent[0]);
 	const [targetLocation, setTargetLocation] = useState(null);
 	const [targetDistance, setTargetDistance] = useState(null);
-
 	// set target distance onChanging of event item
 	useEffect(() => {
 		setCurrentEvent(allEvent[eventIndex]);
@@ -48,7 +46,7 @@ function HomePage() {
 	}
 	return (
 		<div className={`homepage`}>
-			{allEvent && (
+			{allEvent && allEvent.length > 0 && (
 				<>
 					<MainBody currentEvent={currentEvent} />
 					<FilterButton />
