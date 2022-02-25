@@ -7,7 +7,7 @@ import validator from "validator";
 import { ErrorContext } from "../../contexts/ErrorContext";
 
 function LoginForm() {
-  const { login } = useContext(AuthContext);
+  const { user, login } = useContext(AuthContext);
   const { setError } = useContext(ErrorContext);
 
   const navigate = useNavigate();

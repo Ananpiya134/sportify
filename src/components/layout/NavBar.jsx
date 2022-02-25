@@ -16,7 +16,7 @@ function NavBar() {
         </button>
 
         {/* calendar button */}
-        <button className={`btn`} onClick={() => navigate("/events")}>
+        <button className={`btn`} onClick={() => navigate("/calendar")}>
           <i className={`fa-solid fa-calendar-days nav_btn`} />
         </button>
 
@@ -35,8 +35,9 @@ function NavBar() {
           <i className={`fa-solid fa-user nav_btn`} />
         </button>
 
-        <button className={`btn`} onClick={() => logout()}>
-          <i className={`fa-solid fa-right-from-bracket nav_btn`} />
+        {/* profile setting button */}
+        <button className={`btn`} onClick={() => navigate("/Profile")}>
+          <i className={`fa-solid fa-user nav_btn`} />
         </button>
       </div>
     </div>
