@@ -7,113 +7,93 @@ import GoogleLogin from "react-google-login";
 import { REACT_GOOGLE_CLIENT_ID } from "../config/env";
 
 function LandingPage() {
-  const [loginData, setLoginData] = useState(
-    localStorage.getItem("loginData")
-      ? JSON.parse(localStorage.getItem("loginData"))
-      : null
-  );
+	const [loginData, setLoginData] = useState(
+		localStorage.getItem("loginData")
+			? JSON.parse(localStorage.getItem("loginData"))
+			: null
+	);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const handleLogin = async (googleData) => {
-    // const res = await fetch("/api/google-login", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     token: googleData.tokenId,
-    //   }),
-    //   header: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
+	const handleLogin = async (googleData) => {
+		// const res = await fetch("/api/google-login", {
+		//   method: "POST",
+		//   body: JSON.stringify({
+		//     token: googleData.tokenId,
+		//   }),
+		//   header: {
+		//     "Content-Type": "application/json",
+		//   },
+		// });
 
-    const res = await axios.post("auth/login/google", {
-      token: googleData.tokenId,
-    });
-    console.log(res.data);
+		const res = await axios.post("auth/login/google", {
+			token: googleData.tokenId,
+		});
 
-    setLoginData(res.data);
-    localStorage.setItem("loginData", JSON.stringify(res.data));
-    // console.log(googleData);
-  };
+		setLoginData(res.data);
+		localStorage.setItem("loginData", JSON.stringify(res.data));
+		// console.log(googleData);
+	};
 
-  const handleLogout = () => {
-    localStorage.removeItem("loginData");
-    setLoginData(null);
-  };
+	const handleFailure = (res) => {
+		alert(res);
+	};
+	return (
+		<div className={`d-flex flex-column align-items-center`}>
+			<div style={{ marginTop: "69px" }}>
+				<h2 className="b-text">Sportify</h2>
+			</div>
+			<img
+				src="https://res.cloudinary.com/dup2jwtit/image/upload/v1644769593/david-tran-g-dZ1h7nQ0E-unsplash_1_grmrea.jpg"
+				alt=""
+				height="300"
+				width="300"
+			/>
 
-  const handleFailure = (res) => {
-    alert(res);
-  };
-  return (
-    <div className={`d-flex flex-column align-items-center`}>
-      <div style={{ marginTop: "69px" }}>
-        <h2 className="b-text">Sportify</h2>
-      </div>
-      <img
-        src="https://res.cloudinary.com/dup2jwtit/image/upload/v1644769593/david-tran-g-dZ1h7nQ0E-unsplash_1_grmrea.jpg"
-        alt=""
-        height="300"
-        width="300"
-      />
-
-      <div
-        className="d-flex justify-content-around "
-        style={{
-          marginTop: "120px",
-          marginLeft: "5px",
-          marginRight: "5px",
-          alignItems: "center",
-          width: "350px",
-        }}
-      >
-        <button
-          className="button-register"
-          type="button"
-          onClick={() => navigate("/login")}
-        >
-          Sign in
-        </button>
-        <button
-          className="button-register"
-          type="button"
-          onClick={() => navigate("/register")}
-        >
-          Register
-        </button>
-      </div>
-      <div style={{ marginTop: "30px" }}>
-        <button className="button-facebook" type="button">
-          <BsFacebook style={{ width: "50px" }} />
-          Continue With Facebook
-        </button>
-      </div>
-
-      {/* google login component */}
-
-      {loginData ? (
-        <div>
-          <h3> you log in as {loginData.email}</h3>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-      ) : (
-        <GoogleLogin
-          clientId={REACT_GOOGLE_CLIENT_ID}
-          className={`google_btn`}
-          buttonText="Continue with Google"
-          onSuccess={handleLogin}
-          onFailure={handleFailure}
-          cookiePolicy={"single_host_origin"}
-        ></GoogleLogin>
-      )}
-
-      {/* <div style={{ marginTop: "30px" }}>
-				<button className="button-google" type="button">
-					<FcGoogle style={{ width: "50px" }} />
-					Continue With Google
+			<div
+				className="d-flex justify-content-around "
+				style={{
+					marginTop: "120px",
+					marginLeft: "5px",
+					marginRight: "5px",
+					alignItems: "center",
+					width: "350px",
+				}}
+			>
+				<button
+					className="button-register"
+					type="button"
+					onClick={() => navigate("/login")}
+				>
+					Sign in
 				</button>
-			</div> */}
-    </div>
-  );
+				<button
+					className="button-register"
+					type="button"
+					onClick={() => navigate("/register")}
+				>
+					Register
+				</button>
+			</div>
+			<div style={{ marginTop: "30px" }}>
+				<button className="button-facebook" type="button">
+					<BsFacebook style={{ width: "50px" }} />
+					Continue With Facebook
+				</button>
+			</div>
+
+			{/* google login component */}
+
+			<GoogleLogin
+				clientId={REACT_GOOGLE_CLIENT_ID}
+				className={`google_btn`}
+				buttonText="Continue with Google"
+				onSuccess={handleLogin}
+				onFailure={handleFailure}
+				cookiePolicy={"single_host_origin"}
+			></GoogleLogin>
+		</div>
+	);
 }
 
 export default LandingPage;

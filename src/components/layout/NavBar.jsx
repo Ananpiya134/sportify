@@ -7,6 +7,11 @@ function NavBar() {
 	const { logout } = useContext(AuthContext);
 	const navigate = useNavigate();
 
+	const handleLogout = () => {
+		logout();
+		navigate("/");
+	};
+
 	return (
 		<div className={`Nav`}>
 			<div className={`nav_body d-flex justify-content-around`}>
@@ -16,7 +21,7 @@ function NavBar() {
 				</button>
 
 				{/* calendar button */}
-				<button className={`btn`} onClick={() => navigate("/calendar")}>
+				<button className={`btn`} onClick={() => navigate("/events")}>
 					<i className={`fa-solid fa-calendar-days nav_btn`} />
 				</button>
 
@@ -36,7 +41,7 @@ function NavBar() {
 				</button>
 
 				{/* profile setting button */}
-				<button className={`btn`} onClick={logout()}>
+				<button className={`btn`} onClick={handleLogout}>
 					<i className={`fa-solid fa-right-from-bracket nav_btn`} />
 				</button>
 			</div>
