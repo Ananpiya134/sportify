@@ -31,9 +31,10 @@ function NavBar() {
           />
         </button>
 
-        <button className={`btn`}>
+        <button className={`btn`} onClick={() => navigate("/profile")}>
           <i className={`fa-solid fa-user nav_btn`} />
         </button>
+
         <button className={`btn`} onClick={() => logout()}>
           <i className={`fa-solid fa-right-from-bracket nav_btn`} />
         </button>
