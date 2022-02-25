@@ -8,7 +8,6 @@ function MainBody({ currentEvent }) {
 		lat: Number(currentEvent.locationLat),
 		lng: Number(currentEvent.locationLng),
 	};
-	console.log(coordinates);
 	const center = {
 		lat: Number(currentEvent.locationLat) - 0.005,
 		lng: Number(currentEvent.locationLng),

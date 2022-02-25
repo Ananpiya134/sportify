@@ -12,6 +12,7 @@ function EventContextProvider({ children }) {
 		latitude: 0,
 		longitude: 0,
 	});
+
 	// fetch all event from db and set userLocation and event location
 	useEffect(() => {
 		const fetchEvent = async () => {

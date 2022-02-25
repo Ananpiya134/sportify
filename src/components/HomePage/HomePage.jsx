@@ -46,7 +46,7 @@ function HomePage() {
 	}
 	return (
 		<div className={`homepage`}>
-			{allEvent && allEvent.length > 0 && (
+			{allEvent && (
 				<>
 					<MainBody currentEvent={currentEvent} />
 					<FilterButton />
