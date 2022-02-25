@@ -14,7 +14,7 @@ function AuthContextProvider({ children }) {
 	useEffect(() => {
 		if (getToken()) {
 			axios
-				.post(`/auth`)
+				.post(`/auth/`)
 				.then((res) => {
 					setUser(res.data.user);
 				})
