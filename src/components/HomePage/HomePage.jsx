@@ -7,26 +7,26 @@ import { getPreciseDistance } from "geolib";
 import { EventContext } from "../../contexts/EventContext";
 
 function HomePage() {
-	const { allEvent, userLocation } = useContext(EventContext);
+	const { allEvent, userLocation, eventIndex, setEventIndex } =
+		useContext(EventContext);
 
-	const [eventIndex, setEventIndex] = useState(0);
-	const [currentEvent, setCurrentEvent] = useState(allEvent[0]);
 	const [targetLocation, setTargetLocation] = useState(null);
 	const [targetDistance, setTargetDistance] = useState(null);
 
 	// set target distance onChanging of event item
 	useEffect(() => {
-		setCurrentEvent(allEvent[eventIndex]);
-		setTargetLocation({
-			latitude: currentEvent.locationLat,
-			longitude: currentEvent.locationLng,
-		});
+		if (allEvent !== null) {
+			setTargetLocation({
+				latitude: allEvent[eventIndex].locationLat,
+				longitude: allEvent[eventIndex].locationLng,
+			});
+		}
 		if (userLocation !== {} && targetLocation !== null) {
 			const calculatedDistance = calculateDistance(
 				userLocation,
 				targetLocation
 			);
-			setTargetDistance((calculatedDistance / 1000).toFixed(2));
+			setTargetDistance(calculatedDistance);
 		}
 	}, [userLocation, eventIndex]);
 
@@ -44,18 +44,22 @@ function HomePage() {
 			}
 		);
 
-		return distance;
+		const distanceInKm = (distance / 1000).toFixed(2);
+		return distanceInKm;
 	}
 	return (
+		// <div
+		// 	style={{ height: "100vh", width: "100vw", backgroundColor: "grey" }}
+		// ></div>
 		<div className={`homepage`}>
 			{allEvent && (
 				<>
-					<MainBody currentEvent={currentEvent} />
+					<MainBody currentEvent={allEvent[eventIndex]} />
 					<FilterButton />
 					<EventItem
 						eventIndex={eventIndex}
 						setEventIndex={setEventIndex}
-						currentEvent={currentEvent}
+						currentEvent={allEvent[eventIndex]}
 						targetLocation={targetLocation}
 						targetDistance={targetDistance}
 					/>
