@@ -79,8 +79,14 @@ function RegisterForm() {
 
 	return (
 		<div>
-			<div style={{ marginTop: "69px", marginLeft: "51px" }}>
-				<h4>Personal Information</h4>
+			<div className="d-flex align-items-center justify-content-start mt-3 ms-2">
+				<button
+					onClick={() => navigate("/")}
+					style={{ backgroundColor: "transparent", fontSize: "24px" }}
+				>
+					<i className="fa-solid fa-arrow-left" />
+				</button>
+				<h4>Register</h4>
 			</div>
 
 			<form onSubmit={handleSubmitRegister}>

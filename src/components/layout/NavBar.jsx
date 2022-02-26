@@ -8,6 +8,11 @@ function NavBar() {
 
 	const navigate = useNavigate();
 
+	const handleLogout = () => {
+		logout();
+		navigate("/");
+	};
+
 	return (
 		<div className={`Nav`}>
 			<div className={`nav_body d-flex justify-content-around`}>
@@ -38,7 +43,7 @@ function NavBar() {
 				</button>
 
 				{/* profile setting button */}
-				<button className={`btn`} onClick={() => logout()}>
+				<button className={`btn`} onClick={handleLogout}>
 					<i className={`fa-solid fa-right-from-bracket`} />
 				</button>
 			</div>
