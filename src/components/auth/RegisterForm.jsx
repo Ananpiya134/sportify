@@ -12,32 +12,23 @@ function RegisterForm() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	const handleSubmitRegister = async (e) => {
 		e.preventDefault();
-		console.table({
-			firstName,
-			lastName,
-			email,
-			phoneNumber,
-			password,
-			confirmPassword,
-			gender,
-		});
-		// try {
-		//   const res = await axios.post("/users/register", {
-		//     firstName,
-		//     lastName,
-		//     email,
-		//     phoneNumber,
-		//     password,
-		//     confirmPassword,
-		//   });
-		// navigate("/");
-		// } catch (err) {
-		//   console.log(err);
-		// }
+		try {
+			const res = await axios.post("/auth/register", {
+				firstName,
+				lastName,
+				email,
+				phoneNumber,
+				password,
+				confirmPassword,
+			});
+			navigate("/");
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	return (
@@ -109,15 +100,11 @@ function RegisterForm() {
 						}}
 						type="date"
 						className="form-control"
-						// value="2022-01-12"
 						id="txtDate"
 						name="txtDate"
 						value={dateofBirth}
 						onChange={(e) => setDateOfBirth(e.target.value)}
 					/>
-					{/* <div className="line-box">
-            <div className="line"></div>
-          </div> */}
 				</label>
 				<div className="radio-check">
 					<input
