@@ -33,8 +33,8 @@ function NavBar() {
 				</button>
 
 				{/* message button */}
-				<button className={`btn`}>
-					<i className={`fa-solid fa-message nav_btn`} />
+				<button className={`btn`} onClick={() => navigate("/profile")}>
+					<i className={`fa-solid fa-user nav_btn`} />
 				</button>
 
 				{/* profile setting button */}
