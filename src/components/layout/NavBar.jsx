@@ -1,16 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import "../../App.css";
 
 function NavBar() {
 	const { logout } = useContext(AuthContext);
-	const navigate = useNavigate();
 
-	const handleLogout = () => {
-		logout();
-		navigate("/");
-	};
+	const navigate = useNavigate();
 
 	return (
 		<div className={`Nav`}>
@@ -36,13 +32,14 @@ function NavBar() {
 					/>
 				</button>
 
-				<button className={`btn`} onClick={() => navigate("/profile")}>
-					<i className={`fa-solid fa-user nav_btn`} />
+				{/* message button */}
+				<button className={`btn`}>
+					<i className={`fa-solid fa-message nav_btn`} />
 				</button>
 
 				{/* profile setting button */}
-				<button className={`btn`} onClick={handleLogout}>
-					<i className={`fa-solid fa-right-from-bracket nav_btn`} />
+				<button className={`btn`} onClick={() => logout()}>
+					<i className={`fa-solid fa-right-from-bracket`} />
 				</button>
 			</div>
 		</div>

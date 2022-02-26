@@ -146,15 +146,11 @@ function RegisterForm() {
 						}}
 						type="date"
 						className="form-control"
-						// value="2022-01-12"
 						id="txtDate"
 						name="txtDate"
 						value={dateofBirth}
 						onChange={(e) => setDateOfBirth(e.target.value)}
 					/>
-					{/* <div className="line-box">
-            <div className="line"></div>
-          </div> */}
 				</label>
 				<div className="radio-check">
 					<input

@@ -4,8 +4,8 @@ import axios from "../config/axios";
 const EventContext = createContext();
 
 function EventContextProvider({ children }) {
-	const [allEvent, setAllEvent] = useState([]); // all event from database
-	const [currentEvent, setCurrentEvent] = useState(null);
+	const [allEvent, setAllEvent] = useState(null); // all event from database
+	const [eventIndex, setEventIndex] = useState(0);
 	const [eventsLength, setEventsLength] = useState(null);
 	const [userLocation, setUserLocation] = useState({
 		// user current location
@@ -15,16 +15,7 @@ function EventContextProvider({ children }) {
 
 	// fetch all event from db and set userLocation and event location
 	useEffect(() => {
-		const fetchEvent = async () => {
-			try {
-				const res = await axios.get("/events");
-				setAllEvent(res.data.events);
-			} catch (err) {
-				console.log(err);
-			}
-		};
 		fetchEvent();
-		// setCurrentEvent(allEvent);
 
 		navigator.geolocation.getCurrentPosition((pos) => {
 			try {
@@ -42,10 +33,32 @@ function EventContextProvider({ children }) {
 	}, []);
 
 	useEffect(() => {
-		setEventsLength(allEvent.length);
+		if (allEvent) setEventsLength(allEvent.length);
 	}, [allEvent]);
+
+	// function fetching data from database
+	const fetchEvent = async () => {
+		try {
+			const res = await axios.get("/events");
+			setAllEvent(res.data.events);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	console.log(allEvent);
+	console.log(eventsLength);
+
 	return (
-		<EventContext.Provider value={{ allEvent, userLocation, eventsLength }}>
+		<EventContext.Provider
+			value={{
+				allEvent,
+				userLocation,
+				eventsLength,
+				eventIndex,
+				setEventIndex,
+			}}
+		>
 			{children}
 		</EventContext.Provider>
 	);
