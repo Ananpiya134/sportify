@@ -3,20 +3,31 @@ import { Link } from "react-router-dom";
 import axios from "../config/axios";
 import { FcOk } from "react-icons/fc";
 import NavBar from "./layout/NavBar";
+import Input from "./layout/Input";
 
 function Profile() {
   const [profile, setProfile] = useState(null);
+  const [isEditBio, setIseditBio] = useState(false);
 
   useEffect(() => {
+    if (!profile) {
+      axios
+        .get(`/users/${1}`)
+        .then((res) => {
+          // console.log(event);
+          setProfile(res.data.user); // set new state
+          console.log(res.data.user);
+        })
+        .catch((err) => console.log(err));
+    }
+    console.log(profile);
+  }, [profile]);
+
+  const updateBio = (id, bio) => {
     axios
-      .get(`/users/${1}`)
-      .then((res) => {
-        // console.log(event);
-        setProfile(res.data.user); // set new state
-        console.log(res.data.user);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      .put("http://localhost:8000/profile", { bio: "" })
+      .then((response) => {});
+  };
 
   return (
     <div>
@@ -33,7 +44,7 @@ function Profile() {
               />
             </div>
             <div className="profile-name">
-              <div>{profile.firstName}</div>
+              <div> {profile.firstName}</div>
               <div>
                 <FcOk />
               </div>
@@ -58,9 +69,65 @@ function Profile() {
               <div className="line"></div>
             </div>
           </div>
-          <div>{profile.bio}</div>
+
+          {!isEditBio ? ( //edit bio section //
+            <div>{profile.bio}</div>
+          ) : (
+            <div className="d-flex">
+              <textarea
+                type="text"
+                name="bio"
+                placeholder="Enter your bio here"
+                style={{
+                  width: "100%",
+                  minHeight: "150px",
+                  backgroundColor: "	#404040",
+                }}
+                onChange={(e) => {
+                  setProfile({ ...profile, bio: e.target.value });
+                }}
+                value={profile && profile.bio ? profile.bio : ""}
+              />
+              <button
+                className="btn btn-warning"
+                onClick={() => {
+                  let bio = profile.bio;
+                  axios
+                    .put(`/users/bio/${1}`, { bio: bio })
+                    .then((res) => {
+                      let data = res.data;
+                      if (data.status) {
+                        alert(data.msg);
+                        setIseditBio(false);
+                      } else {
+                        alert(data.msg);
+                      }
+                    })
+                    .catch((err) => console.log(err));
+                }}
+              >
+                Update
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  setIseditBio(false);
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          )}
         </div>
       )}
+      <button
+        className="btn btn-warning"
+        onClick={() => {
+          setIseditBio(true);
+        }}
+      >
+        Update
+      </button>
       <NavBar />
     </div>
   );
