@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "../config/axios";
 import { FcOk } from "react-icons/fc";
 import NavBar from "./layout/NavBar";
 import Input from "./layout/Input";
+import { AuthContext } from "../contexts/AuthContext";
 
 function Profile() {
+  const { user } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
   const [isEditBio, setIseditBio] = useState(false);
 
   useEffect(() => {
     if (!profile) {
       axios
-        .get(`/users/${1}`)
+        .get(`/users/${user.id}`)
         .then((res) => {
           // console.log(event);
           setProfile(res.data.user); // set new state
