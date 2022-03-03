@@ -201,6 +201,7 @@ function Profile() {
                   width: "100%",
                   minHeight: "150px",
                   backgroundColor: "	#404040",
+                  marginTop: "25px",
                 }}
                 onChange={(e) => {
                   setProfile({ ...profile, bio: e.target.value });
