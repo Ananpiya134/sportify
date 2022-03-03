@@ -283,30 +283,6 @@ function CreateEventForm() {
 					/>
 				</div>
 
-				{/* upload image input */}
-				<div className="create_event_container">
-					<label
-						className="form-label create_event_label"
-						htmlFor={`eventImage`}
-					>
-						Upload event image
-					</label>
-					<input
-						type="file"
-						className="form-control input"
-						value={eventImage}
-						id={`eventImage`}
-						ref={imageEl}
-						onChange={(e) => {
-							if (e.target.files[0]) setImageInput(e.target.files[0]);
-						}}
-						aria-describedby="Event Name for the post"
-					/>
-				</div>
-				<div className="d-flex justify-content-center">
-					<ShowPictureInput />
-				</div>
-
 				{/* button */}
 				<div className={`mt-5`}>
 					<button
