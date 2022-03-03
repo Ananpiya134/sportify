@@ -258,6 +258,13 @@ button:hover {
 	height: 77px;
 }
 
+.going_status_true {
+	background-color: #4e4e4e;
+	border-radius: 50px;
+	width: 77px;
+	color: white;
+}
+
 .add_btn {
 	background-color: #34a853;
 	border-radius: 50px;
