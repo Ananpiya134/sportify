@@ -3,11 +3,12 @@ function ActivityButton({ item, handleChooseEvent }) {
 		<button
 			className="col-4 activity_item"
 			type="button"
-			value={item.value}
-			onClick={(e) => handleChooseEvent(e.target.value)}
+			name={item.name}
+			value={item.id}
+			onClick={(e) => handleChooseEvent(e.target.name, Number(e.target.value))}
 		>
 			<i className={`${item.icon} mb-2 `} />
-			{item.value}
+			{item.name}
 		</button>
 	);
 }

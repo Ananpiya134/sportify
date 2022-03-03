@@ -13,37 +13,62 @@ function EventContextProvider({ children }) {
 		longitude: 0,
 	});
 	const [activityList, setActivityList] = useState([]);
-	const [filterList, setFilterList] = useState(null);
-	console.log(allEvent);
+	const [filteredBar, setFilteredBar] = useState([]);
+	const [filterIdList, setFilterIdList] = useState([]);
+	const [filteredEvent, setFilteredEvent] = useState(null);
 	// fetch all event from db and set userLocation and event location
 	useEffect(() => {
-		fetchEvent();
-		fetchActivities();
-		navigator.geolocation.getCurrentPosition((pos) => {
-			try {
-				if (pos.coords) {
-					setUserLocation((prev) => ({
-						...prev,
-						latitude: pos.coords.latitude,
-						longitude: pos.coords.longitude,
-					}));
+		if (filteredBar.length === 0) {
+			fetchEvent();
+			fetchActivities();
+			navigator.geolocation.getCurrentPosition((pos) => {
+				try {
+					if (pos.coords) {
+						setUserLocation((prev) => ({
+							...prev,
+							latitude: pos.coords.latitude,
+							longitude: pos.coords.longitude,
+						}));
+					}
+				} catch (err) {
+					console.log(err.message);
 				}
-			} catch (err) {
-				console.log(err.message);
-			}
-		});
-	}, []);
+			});
+		} else if (filteredBar.length > 0) {
+			fetchEventByFilter();
+		}
+	}, [filteredBar]);
 
 	useEffect(() => {
-		if (allEvent) setEventsLength(allEvent.length);
-	}, [allEvent]);
+		if (allEvent) {
+			if (filteredEvent) {
+				setEventsLength(filteredEvent.length);
+			} else {
+				setEventsLength(allEvent.length);
+			}
+		}
+	}, [allEvent, filteredEvent]);
 
 	// function fetching data from database
 	const fetchEvent = async () => {
 		try {
 			const res = await axios.get("/events");
-			console.log(res.data.events);
 			setAllEvent(res.data.events);
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const fetchEventByFilter = async () => {
+		try {
+			const filterItem = allEvent.filter((item) => {
+				for (let i = 0; i <= filterIdList.length; i++) {
+					if (item.Activity.id === filterIdList[i]) {
+						return true;
+					}
+				}
+			});
+			setFilteredEvent(filterItem);
 		} catch (err) {
 			console.log(err);
 		}
@@ -52,23 +77,45 @@ function EventContextProvider({ children }) {
 	const fetchActivities = async () => {
 		try {
 			const res = await axios.get("/activities");
-			console.log(res.data);
+			setActivityList(res.data.activities);
 		} catch (err) {
 			console.log(err);
 		}
 	};
 
-	console.log(allEvent);
-	console.log(eventsLength);
+	const handleChooseEvent = (name, value) => {
+		if (name === undefined) return;
+		const selectedIndex = filteredBar.findIndex((item) => item === name);
+
+		if (selectedIndex === -1) {
+			setFilteredBar((prev) => [...prev, name]);
+			setFilterIdList((prev) => [...prev, value]);
+		}
+	};
+
+	const handleCancelFilter = (name, value) => {
+		const deletedIndex = filteredBar.findIndex((el) => el === value);
+		const newFilter = [...filteredBar];
+		const newFilterById = [...filterIdList];
+		newFilter.splice(deletedIndex, 1);
+		newFilterById.splice(deletedIndex, 1);
+		setFilteredBar(newFilter);
+		setFilterIdList(newFilterById);
+	};
 
 	return (
 		<EventContext.Provider
 			value={{
-				allEvent,
+				allEvent: filteredEvent ? filteredEvent : allEvent,
 				userLocation,
 				eventsLength,
 				eventIndex,
 				setEventIndex,
+				activityList,
+				handleChooseEvent,
+				handleCancelFilter,
+				filteredBar,
+				setFilteredBar,
 			}}
 		>
 			{children}

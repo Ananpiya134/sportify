@@ -3,26 +3,11 @@ import { useState } from "react";
 import FilterItem from "./FilterItem";
 import { initial_icon } from "../services/activityData";
 import ActivityButton from "./AtivityButton";
+import { EventContext } from "../contexts/EventContext";
 
-function ChooseEvent() {
-	const [filter, setFilter] = useState([]);
-	console.log(filter);
-	const handleChooseEvent = (value) => {
-		if (value === undefined) return;
-		const selectedIndex = filter.findIndex((item) => item === value);
-
-		if (selectedIndex === -1) {
-			setFilter((prev) => [...prev, value]);
-		}
-	};
-
-	const handleCancelFilter = (value) => {
-		const deletedIndex = filter.findIndex((el) => el === value);
-		const newFilter = [...filter];
-		newFilter.splice(deletedIndex, 1);
-		setFilter(newFilter);
-		console.log(newFilter);
-	};
+function ChooseEvent({}) {
+	const { activityList, filteredBar, handleChooseEvent, handleCancelFilter } =
+		useContext(EventContext);
 
 	return (
 		// outer container
@@ -38,7 +23,7 @@ function ChooseEvent() {
 			{/* filter items */}
 			<div className="container w-85">
 				<div className="row">
-					{filter.map((item) => {
+					{filteredBar.map((item) => {
 						return (
 							<FilterItem item={item} handleCancelFilter={handleCancelFilter} />
 						);
@@ -49,7 +34,7 @@ function ChooseEvent() {
 
 			{/* activity container */}
 			<div className="row choose_event_container">
-				{initial_icon.map((item) => {
+				{activityList.map((item) => {
 					return (
 						<ActivityButton
 							item={item}

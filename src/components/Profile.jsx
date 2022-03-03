@@ -55,17 +55,17 @@ function Profile() {
               <p>Rangsit Bkk</p>
             </div>
             <div className="profile-details">
-              {/* <div style={{ padding: "30px", textAlign: "center" }}>
+              <div style={{ padding: "30px", textAlign: "center" }}>
                 0 K <br />
                 Friends
-              </div> */}
+              </div>
               <div style={{ padding: "30px", textAlign: "center" }}>
                 112 <br />
                 Events
               </div>
-              {/* <div style={{ padding: "30px", textAlign: "center" }}>
+              <div style={{ padding: "30px", textAlign: "center" }}>
                 12 <br /> Badges
-              </div> */}
+              </div>
             </div>
             <div className="line-box">
               <div className="line"></div>
@@ -84,7 +84,6 @@ function Profile() {
                   width: "100%",
                   minHeight: "150px",
                   backgroundColor: "	#404040",
-                  padding: "20px",
                 }}
                 onChange={(e) => {
                   setProfile({ ...profile, bio: e.target.value });
@@ -99,12 +98,12 @@ function Profile() {
                     .put(`/users/bio/${user.id}`, { bio: bio })
                     .then((res) => {
                       let data = res.data;
-                      if (data.status) {
-                        alert(data.msg);
-                        setIseditBio(false);
-                      } else {
-                        alert(data.msg);
-                      }
+                      // if (data.status) {
+                      //   alert(data.msg);
+                      //   setIseditBio(false);
+                      // } else {
+                      //   alert(data.msg);
+                      // }
                     })
                     .catch((err) => console.log(err));
                 }}
@@ -124,12 +123,12 @@ function Profile() {
         </div>
       )}
       <button
-        className="Bio-btn btn btn-warning"
+        className="btn btn-warning"
         onClick={() => {
           setIseditBio(true);
         }}
       >
-        Update Bio
+        Update
       </button>
       <NavBar />
     </div>
