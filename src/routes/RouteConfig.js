@@ -13,7 +13,6 @@ import { AuthContext } from "../contexts/AuthContext";
 import EventList from "../components/Calendar/EventList";
 import EventCalendar from ".././components/Calendar/eventcalender/EventCalendar";
 import ChooseEvent from "../components/ChooseEvent";
-import FilterItem from "../components/FilterItem";
 
 function RouteConfig() {
 	const { user } = useContext(AuthContext);
@@ -23,8 +22,8 @@ function RouteConfig() {
 				<Route element={<MainLayout />}>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/profile" element={<Profile />} />
-					<Route path="choose-event" element={<FilterItem />} />
 					<Route path="/events" element={<EventCalendar />} />
+					<Route path="/filter" element={<ChooseEvent />} />
 					<Route path="/create-event" element={<CreateEvent />} />
 					<Route path="/events/:id" element={<EventDetail />} />
 					<Route path="*" element={<Navigate to="/" />} />

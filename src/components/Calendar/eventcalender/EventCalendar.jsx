@@ -11,8 +11,10 @@ import EventList from "../EventList";
 import axios from "../../../config/axios";
 import { useParams } from "react-router-dom";
 import "./eventcalender.css";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function EventCalendar() {
+  const { user } = useContext(AuthContext);
   const [show, setShow] = useState("ALL");
   const [hostedEvents, setHostedEvents] = useState([]);
   const [events, setEvents] = useState([]);
@@ -21,8 +23,8 @@ function EventCalendar() {
   useEffect(() => {
     console.log("in eff");
     Promise.all([
-      axios.get(`/users/${3}/events`),
-      axios.get(`/users/${3}/participations`),
+      axios.get(`/users/${user.id}/events`),
+      axios.get(`/users/${user.id}/participations`),
     ]).then((res) => {
       setHostedEvents(res[0].data.events);
       setEvents(res[1].data.events);
