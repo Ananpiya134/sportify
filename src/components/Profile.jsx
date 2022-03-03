@@ -95,7 +95,7 @@ function Profile() {
                 onClick={() => {
                   let bio = profile.bio;
                   axios
-                    .put(`/users/bio/${1}`, { bio: bio })
+                    .put(`/users/bio/${user.id}`, { bio: bio })
                     .then((res) => {
                       let data = res.data;
                       if (data.status) {
