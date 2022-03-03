@@ -43,8 +43,8 @@ function EventItem({
 				/>
 
 				{/* event detail box */}
-				<Link to={`/events/${eventIndex}`}>
-					<div className={`main_body_eventDetail`}>
+				<Link to={`/events/${currentEvent.id}`}>
+					<div className={`main_body_eventDetail`} type="button">
 						<div className={`event_image`}></div>
 						<div className={`mt-3 mx-2`}>
 							<h3 className={`event_thumbnail_title text-black`}>
