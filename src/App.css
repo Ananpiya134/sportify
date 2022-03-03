@@ -494,3 +494,12 @@ svg {
 .event-calendar-container {
   margin: 20px 0;
 }
+
+.Bio-btn {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.bio-content {
+  padding: 20px;
+}

@@ -55,17 +55,17 @@ function Profile() {
               <p>Rangsit Bkk</p>
             </div>
             <div className="profile-details">
-              <div style={{ padding: "30px", textAlign: "center" }}>
+              {/* <div style={{ padding: "30px", textAlign: "center" }}>
                 0 K <br />
                 Friends
-              </div>
+              </div> */}
               <div style={{ padding: "30px", textAlign: "center" }}>
                 112 <br />
                 Events
               </div>
-              <div style={{ padding: "30px", textAlign: "center" }}>
+              {/* <div style={{ padding: "30px", textAlign: "center" }}>
                 12 <br /> Badges
-              </div>
+              </div> */}
             </div>
             <div className="line-box">
               <div className="line"></div>
@@ -84,6 +84,7 @@ function Profile() {
                   width: "100%",
                   minHeight: "150px",
                   backgroundColor: "	#404040",
+                  padding: "20px",
                 }}
                 onChange={(e) => {
                   setProfile({ ...profile, bio: e.target.value });
@@ -123,12 +124,12 @@ function Profile() {
         </div>
       )}
       <button
-        className="btn btn-warning"
+        className="Bio-btn btn btn-warning"
         onClick={() => {
           setIseditBio(true);
         }}
       >
-        Update
+        Update Bio
       </button>
       <NavBar />
     </div>
