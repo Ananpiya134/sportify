@@ -97,7 +97,6 @@ function CreateEventForm() {
             value={eventName}
             onChange={(e) => setEventName(e.target.value)}
             aria-describedby="Event Name for the post"
-            style={{ backgroundColor: "	#90EE90" }}
           />
         </div>
 
@@ -116,7 +115,6 @@ function CreateEventForm() {
             id={`eventCapacity`}
             onChange={(e) => setEventCapacity(e.target.value)}
             aria-describedby="Event Name for the post"
-            style={{ backgroundColor: "	#90EE90" }}
           />
         </div>
 
@@ -135,7 +133,6 @@ function CreateEventForm() {
             id={`eventLocation`}
             onChange={(e) => setEventLocation(e.target.value)}
             aria-describedby="Event Name for the post"
-            style={{ backgroundColor: "	#90EE90" }}
           />
         </div>
 
@@ -154,7 +151,6 @@ function CreateEventForm() {
             id={`eventDescription`}
             onChange={(e) => setEventDescription(e.target.value)}
             aria-describedby="Event Name for the post"
-            style={{ backgroundColor: "	#90EE90" }}
           />
         </div>
 
@@ -210,7 +206,6 @@ function CreateEventForm() {
           }}
           value={dateTimeStart}
           onChange={handleTimeStartUpdate}
-          style={{ backgroundColor: "	#90EE90" }}
         />
 
         {/* date time end */}
@@ -226,7 +221,6 @@ function CreateEventForm() {
           }}
           value={dateTimeStart}
           onChange={handleTimeEndUpdate}
-          style={{ backgroundColor: "	#90EE90" }}
         />
 
         {/* upload image input */}
@@ -244,7 +238,6 @@ function CreateEventForm() {
             id={`eventImage`}
             onChange={(e) => setEventImage(e.target.value)}
             aria-describedby="Event Name for the post"
-            style={{ backgroundColor: "green" }}
           />
         </div>
         <div className="d-flex justify-content-center">

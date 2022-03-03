@@ -53,25 +53,33 @@ function Profile() {
               <p>Rangsit Bkk</p>
             </div>
             <div className="profile-details">
-              <div style={{ padding: "30px", textAlign: "center" }}>
+              {/* <div style={{ padding: "30px", textAlign: "center" }}>
                 0 K <br />
                 Friends
-              </div>
-              <div style={{ padding: "30px", textAlign: "center" }}>
+              </div> */}
+              {/* <div
+                style={{
+                  paddingTop: "40px",
+                  paddingBottom: "15px",
+                  textAlign: "center",
+                }}
+              >
                 112 <br />
                 Events
-              </div>
-              <div style={{ padding: "30px", textAlign: "center" }}>
+              </div> */}
+              {/* <div style={{ padding: "30px", textAlign: "center" }}>
                 12 <br /> Badges
-              </div>
+              </div> */}
             </div>
-            <div className="line-box">
+            {/* <div className="line-box">
               <div className="line"></div>
-            </div>
+            </div> */}
           </div>
 
           {!isEditBio ? ( //edit bio section //
-            <div>{profile.bio}</div>
+            <div className="bio-details" style={{ marginTop: "30px" }}>
+              {profile.bio}
+            </div>
           ) : (
             <div className="d-flex">
               <textarea
@@ -113,6 +121,7 @@ function Profile() {
                 onClick={() => {
                   setIseditBio(false);
                 }}
+                style={{ alignItems: "bottom" }}
               >
                 Cancel
               </button>
@@ -120,15 +129,16 @@ function Profile() {
           )}
         </div>
       )}
+      <NavBar />
       <button
-        className="btn btn-warning"
+        className="btn btn-success"
         onClick={() => {
           setIseditBio(true);
         }}
+        style={{ width: "100%" }}
       >
-        Update
+        UPDATE BIO
       </button>
-      <NavBar />
     </div>
   );
 }

@@ -216,10 +216,11 @@ button:hover {
 }
 
 .button-facebook {
-  width: 320px;
+  width: 315px;
   background-color: #1877f2;
   color: white;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 60px;
 }
 .button-google {
   width: 320px;
@@ -493,4 +494,8 @@ svg {
 
 .event-calendar-container {
   margin: 20px 0;
+}
+
+.bio-details {
+  padding: 20px;
 }
