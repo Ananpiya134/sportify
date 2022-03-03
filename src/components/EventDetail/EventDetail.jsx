@@ -128,7 +128,7 @@ function EventDetail() {
 							{/* 77/2 Chakkapetch Road, Wangburapapirom, phranakorn district,
 							bangkok 10200 */}
 						</p>
-						<div className={`event_detail_map`} />
+						{/* <div className={`event_detail_map`} /> */}
 					</div>
 				</>
 			)}
