@@ -15,7 +15,7 @@ function EventDetail() {
 
 	useEffect(() => {
 		axios.get(`events/${id}`).then((res) => {
-			console.log(res.data.events.Participations);
+			setEvent(res.data.events);
 		});
 	}, [id]);
 
