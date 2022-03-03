@@ -41,23 +41,9 @@ function CreateEventForm() {
 
 	const handleSubmitCreateEvent = async (e) => {
 		e.preventDefault();
-		Geocode.setApiKey(GEOCODE_API);
-		Geocode.setLanguage("th");
-		Geocode.setRegion("th");
-		Geocode.setLocationType("ROOFTOP");
-		if (eventLocation !== "") {
-			await Geocode.fromAddress(eventLocation)
-				.then((res) =>
-					setLocationLatLng({
-						latitude: res.results[0].geometry.location.lat,
-						longitude: res.results[0].geometry.location.lng,
-					})
-				)
-				.catch(() => console.log(`invalid address`));
-		}
 
 		await axios
-			.post("/events/", {
+			.post("/events", {
 				title: eventName,
 				detail: description,
 				lat: locationLatLng.latitude,
@@ -72,6 +58,24 @@ function CreateEventForm() {
 			.then((res) => console.log(res))
 			.catch((err) => console.log(err.message));
 		navigate("/");
+	};
+
+	const findEventLocation = async (e) => {
+		e.preventDefault();
+		Geocode.setApiKey(GEOCODE_API);
+		Geocode.setLanguage("th");
+		Geocode.setRegion("th");
+		Geocode.setLocationType("ROOFTOP");
+		if (eventLocation !== "") {
+			await Geocode.fromAddress(eventLocation)
+				.then((res) =>
+					setLocationLatLng({
+						latitude: res.results[0].geometry.location.lat,
+						longitude: res.results[0].geometry.location.lng,
+					})
+				)
+				.catch(() => console.log(`invalid address`));
+		}
 	};
 
 	const handleChooseSkillOption = (e) => {
@@ -90,18 +94,18 @@ function CreateEventForm() {
 		setDateTimeEnd(e.target.value);
 	};
 
-	// const test = (e) => {
-	// 	e.preventDefault();
-	// 	if (eventName) console.log(eventName);
-	// 	if (description) console.log(description);
-	// 	if (locationLatLng)
-	// 		console.log(`lat ${locationLatLng.lat} and lang ${locationLatLng.lng}`);
-	// 	if (dateTimeStart) console.log(dateTimeStart);
-	// 	if (dateTimeEnd) console.log(dateTimeEnd);
-	// 	if (eventCapacity) console.log(eventCapacity);
-	// 	if (skillLevel) console.log(skillLevel);
-	// 	if (activityId) console.log(activityId);
-	// };
+	const test = (e) => {
+		e.preventDefault();
+		if (eventName) console.log(eventName);
+		if (description) console.log(description);
+		if (locationLatLng)
+			console.log(`lat ${locationLatLng.lat} and lang ${locationLatLng.lng}`);
+		if (dateTimeStart) console.log(dateTimeStart);
+		if (dateTimeEnd) console.log(dateTimeEnd);
+		if (eventCapacity) console.log(eventCapacity);
+		if (skillLevel) console.log(skillLevel);
+		if (activityId) console.log(activityId);
+	};
 
 	return (
 		<>
@@ -145,7 +149,10 @@ function CreateEventForm() {
 						className="form-control input"
 						value={eventLocation}
 						id={`eventLocation`}
-						onChange={(e) => setEventLocation(e.target.value)}
+						onChange={(e) => {
+							setEventLocation(e.target.value);
+							findEventLocation(e);
+						}}
 						aria-describedby="Event Name for the post"
 					/>
 				</div>
@@ -271,7 +278,7 @@ function CreateEventForm() {
 						InputLabelProps={{
 							shrink: true,
 						}}
-						value={dateTimeStart}
+						value={dateTimeEnd}
 						onChange={handleTimeEndUpdate}
 					/>
 				</div>
