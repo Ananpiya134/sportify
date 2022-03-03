@@ -6,7 +6,7 @@ function ActivityButton({ item, handleChooseEvent }) {
 			value={item.value}
 			onClick={(e) => handleChooseEvent(e.target.value)}
 		>
-			{item.icon}
+			<i className={`${item.icon} mb-2 `} />
 			{item.value}
 		</button>
 	);
