@@ -10,7 +10,6 @@ import PublicLayout from "../components/layout/PublicLayout";
 import CreateEvent from "../components/CreateEvent/CreateEvent";
 import Profile from "../components/Profile";
 import { AuthContext } from "../contexts/AuthContext";
-import EventList from "../components/Calendar/EventList";
 import EventCalendar from ".././components/Calendar/eventcalender/EventCalendar";
 import ChooseEvent from "../components/ChooseEvent";
 
