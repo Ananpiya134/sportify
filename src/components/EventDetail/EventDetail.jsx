@@ -63,18 +63,18 @@ function EventDetail() {
           </div>
 
           {/* event stats */}
-          <div className={`event_stats `}>
-            <div className={`d-flex stats `}>
+          <div className="event_stats  event-stat-item">
+            <div className={"d-flex stats event-capacity"}>
               <p className={`b-text title-stats`}>Event Capacity</p>
-              <p className={`b-text value-stats`}>{20}</p>
+              <p className={"b-text value-stats"}>{20}</p>
             </div>
-            <div className={`d-flex stats `}>
+            <div className={`d-flex stats event-going`}>
               <p className={`b-text title-stats`}>Going</p>
               <p className={`b-text value-stats`}>
                 {event.Participations.length}
               </p>
             </div>
-            <div className={`d-flex stats  `}>
+            <div className={`d-flex stats event-skill `}>
               <p className={`b-text title-stats`}>Skill Level</p>
               <p className={`b-text value-stats`}>{"INTERMEDIATEDs"}</p>
             </div>
