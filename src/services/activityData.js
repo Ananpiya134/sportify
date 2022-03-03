@@ -1,60 +1,66 @@
-import { BsStar } from "react-icons/bs";
-import { BiCycling } from "react-icons/bi";
-import { IoMdFitness } from "react-icons/io";
-import {
-	MdSportsSoccer,
-	MdSportsBasketball,
-	MdSportsGolf,
-	MdSportsMma,
-	MdSportsTennis,
-	MdSportsVolleyball,
-} from "react-icons/md";
-
 const initial_icon = [
 	{
 		id: 1,
-		value: "Cycling",
-		icon: <BiCycling />,
+		name: "Cycling",
+		icon: "fa-solid fa-person-biking",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 	{
 		id: 2,
-		value: "Basketball",
-		icon: <MdSportsBasketball />,
+		name: "Basketball",
+		icon: "fa-solid fa-basketball",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 	{
 		id: 3,
-		value: "Golf",
-		icon: <MdSportsGolf />,
+		name: "Golf",
+		icon: "fa-solid fa-golf-ball-tee ",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 	{
 		id: 4,
-		value: "Boxing",
-		icon: <MdSportsMma />,
+		name: "Boxing",
+		icon: "fa-solid fa-basketball",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 	{
 		id: 5,
-		value: "Tennis",
-		icon: <MdSportsTennis />,
+		name: "Tennis",
+		icon: "fa-solid fa-table-tennis-paddle-ball",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 	{
 		id: 6,
-		value: "Fitness",
-		icon: <IoMdFitness />,
+		name: "Fitness",
+		icon: "fa-solid fa-dumbbell",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 	{
 		id: 7,
-		value: "Volleyball",
-		icon: <MdSportsVolleyball />,
+		name: "Volleyball",
+		icon: "fa-solid fa-volleyball",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 	{
 		id: 8,
-		value: "Football",
-		icon: <MdSportsSoccer />,
+		name: "Football",
+		icon: "fa-solid fa-football",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 	{
 		id: 9,
-		value: "Other",
-		icon: <BsStar />,
+		name: "Other",
+		icon: "fa-solid fa-ellipsis",
+		created_at: new Date(),
+		updated_at: new Date(),
 	},
 ];
 

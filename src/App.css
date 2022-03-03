@@ -388,6 +388,7 @@ button:hover {
 }
 .activity_item {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 1px solid #ffffff;
