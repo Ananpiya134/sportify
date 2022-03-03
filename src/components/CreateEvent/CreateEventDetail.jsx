@@ -2,6 +2,7 @@ import { useState, useEffect, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import defaultPic from "../../public/image/map.jpeg";
 import ShowPictureInput from "./ShowPictureInput";
+
 import Geocode from "react-geocode";
 import { GEOCODE_API } from "../../config/env";
 import axios from "axios";
@@ -41,23 +42,9 @@ function CreateEventForm() {
 
   const handleSubmitCreateEvent = async (e) => {
     e.preventDefault();
-    Geocode.setApiKey(GEOCODE_API);
-    Geocode.setLanguage("th");
-    Geocode.setRegion("th");
-    Geocode.setLocationType("ROOFTOP");
-    if (eventLocation !== "") {
-      await Geocode.fromAddress(eventLocation)
-        .then((res) =>
-          setLocationLatLng({
-            latitude: res.results[0].geometry.location.lat,
-            longitude: res.results[0].geometry.location.lng,
-          })
-        )
-        .catch(() => console.log(`invalid address`));
-    }
 
     await axios
-      .post("/events/", {
+      .post("/events", {
         title: eventName,
         detail: description,
         lat: locationLatLng.latitude,
@@ -72,6 +59,24 @@ function CreateEventForm() {
       .then((res) => console.log(res))
       .catch((err) => console.log(err.message));
     navigate("/");
+  };
+
+  const findEventLocation = async (e) => {
+    e.preventDefault();
+    Geocode.setApiKey(GEOCODE_API);
+    Geocode.setLanguage("th");
+    Geocode.setRegion("th");
+    Geocode.setLocationType("ROOFTOP");
+    if (eventLocation !== "") {
+      await Geocode.fromAddress(eventLocation)
+        .then((res) =>
+          setLocationLatLng({
+            latitude: res.results[0].geometry.location.lat,
+            longitude: res.results[0].geometry.location.lng,
+          })
+        )
+        .catch(() => console.log(`invalid address`));
+    }
   };
 
   const handleChooseSkillOption = (e) => {
@@ -90,18 +95,18 @@ function CreateEventForm() {
     setDateTimeEnd(e.target.value);
   };
 
-  // const test = (e) => {
-  // 	e.preventDefault();
-  // 	if (eventName) console.log(eventName);
-  // 	if (description) console.log(description);
-  // 	if (locationLatLng)
-  // 		console.log(`lat ${locationLatLng.lat} and lang ${locationLatLng.lng}`);
-  // 	if (dateTimeStart) console.log(dateTimeStart);
-  // 	if (dateTimeEnd) console.log(dateTimeEnd);
-  // 	if (eventCapacity) console.log(eventCapacity);
-  // 	if (skillLevel) console.log(skillLevel);
-  // 	if (activityId) console.log(activityId);
-  // };
+  const test = (e) => {
+    e.preventDefault();
+    if (eventName) console.log(eventName);
+    if (description) console.log(description);
+    if (locationLatLng)
+      console.log(`lat ${locationLatLng.lat} and lang ${locationLatLng.lng}`);
+    if (dateTimeStart) console.log(dateTimeStart);
+    if (dateTimeEnd) console.log(dateTimeEnd);
+    if (eventCapacity) console.log(eventCapacity);
+    if (skillLevel) console.log(skillLevel);
+    if (activityId) console.log(activityId);
+  };
 
   return (
     <>
@@ -145,7 +150,10 @@ function CreateEventForm() {
             className="form-control input"
             value={eventLocation}
             id={`eventLocation`}
-            onChange={(e) => setEventLocation(e.target.value)}
+            onChange={(e) => {
+              setEventLocation(e.target.value);
+              findEventLocation(e);
+            }}
             aria-describedby="Event Name for the post"
           />
         </div>
@@ -180,30 +188,30 @@ function CreateEventForm() {
             value={skillLevel}
             sx={{ height: "50px" }}
             onChange={handleChooseSkillOption}
-            style={{ backgroundColor: "white", color: "	#90EE90" }}
+            style={{ backgroundColor: "#323232", color: "	white" }}
           >
             <MenuItem
               value=""
               disabled
-              style={{ backgroundColor: "black", color: "	#90EE90" }}
+              style={{ backgroundColor: "#323232", color: "	white" }}
             >
               Select
             </MenuItem>
             <MenuItem
               value={"BEGINNER"}
-              style={{ backgroundColor: "black", color: "	#90EE90" }}
+              style={{ backgroundColor: "#323232", color: "white" }}
             >
               Beginner
             </MenuItem>
             <MenuItem
               value={"INTERMEDIATE"}
-              style={{ backgroundColor: "black", color: "	#90EE90" }}
+              style={{ backgroundColor: "#323232", color: "	white" }}
             >
               Intermediate
             </MenuItem>
             <MenuItem
               value={"EXPERT"}
-              style={{ backgroundColor: "black", color: "	#90EE90" }}
+              style={{ backgroundColor: "#323232", color: "white" }}
             >
               Expert
             </MenuItem>
@@ -222,12 +230,18 @@ function CreateEventForm() {
             value={activityId}
             sx={{ height: "50px" }}
             onChange={handleChooseActivityOption}
-            style={{ backgroundColor: "white", color: "	#90EE90" }}
+            className="activity-select"
+            style={{ backgroundColor: "#323232", color: "	white" }}
           >
             <MenuItem
               value=""
               disabled
-              style={{ backgroundColor: "black", color: "	#90EE90" }}
+              style={{
+                backgroundColor: "#323232",
+                color: "	white",
+                paddingTop: "0px !important",
+                paddingBottom: "0px !important",
+              }}
             >
               Select
             </MenuItem>
@@ -235,7 +249,7 @@ function CreateEventForm() {
               return (
                 <MenuItem
                   value={item.id}
-                  style={{ backgroundColor: "black", color: "	#90EE90" }}
+                  style={{ backgroundColor: "#323232", color: "	white" }}
                 >
                   {item.name}
                 </MenuItem>
@@ -271,33 +285,9 @@ function CreateEventForm() {
             InputLabelProps={{
               shrink: true,
             }}
-            value={dateTimeStart}
+            value={dateTimeEnd}
             onChange={handleTimeEndUpdate}
           />
-        </div>
-
-        {/* upload image input */}
-        <div className="create_event_container">
-          <label
-            className="form-label create_event_label"
-            htmlFor={`eventImage`}
-          >
-            Upload event image
-          </label>
-          <input
-            type="file"
-            className="form-control input"
-            value={eventImage}
-            id={`eventImage`}
-            ref={imageEl}
-            onChange={(e) => {
-              if (e.target.files[0]) setImageInput(e.target.files[0]);
-            }}
-            aria-describedby="Event Name for the post"
-          />
-        </div>
-        <div className="d-flex justify-content-center">
-          <ShowPictureInput />
         </div>
 
         {/* button */}
