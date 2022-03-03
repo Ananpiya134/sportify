@@ -504,3 +504,15 @@ svg {
 .bio-details {
   padding: 20px;
 }
+
+.Bio-btn {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.bio-content {
+  padding: 20px;
+}
+.upload-btn {
+  border-radius: 0px;
+}
