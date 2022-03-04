@@ -113,8 +113,12 @@ function CreateEventForm() {
       <form className={`w-100`} onSubmit={handleSubmitCreateEvent}>
         {/* event name input */}
         <div className="create_event_container ">
-          <label className="form-label" htmlFor={`eventName`}>
-            Event name
+          <label
+            className="form-label"
+            htmlFor={`eventName`}
+            style={{ color: "	white" }}
+          >
+            Event Name
           </label>
           <input
             type="text"
@@ -127,7 +131,11 @@ function CreateEventForm() {
 
         {/* event capacity input */}
         <div className="create_event_container">
-          <label className="form-label" htmlFor={`eventCapacity`}>
+          <label
+            className="form-label"
+            htmlFor={`eventCapacity`}
+            style={{ color: "	white" }}
+          >
             Event Capacity
           </label>
           <input
@@ -142,8 +150,12 @@ function CreateEventForm() {
 
         {/* location input */}
         <div className="create_event_container">
-          <label className="form-label " htmlFor={`eventLocation`}>
-            location
+          <label
+            className="form-label "
+            htmlFor={`eventLocation`}
+            style={{ color: "	white" }}
+          >
+            Location
           </label>
           <input
             type="text"
@@ -163,6 +175,7 @@ function CreateEventForm() {
           <label
             // className="form-label "
             htmlFor={`eventDescription`}
+            style={{ color: "	white" }}
           >
             Description:
           </label>
@@ -178,7 +191,11 @@ function CreateEventForm() {
 
         {/* level drop down*/}
         <FormControl fullWidth className={`my-5`} sx={{ left: 0 }}>
-          <InputLabel id="skill-select-lable" className="form-label">
+          <InputLabel
+            id="skill-select-lable"
+            className="form-label"
+            style={{ color: "	white" }}
+          >
             Skill Level
           </InputLabel>
           <Select
@@ -220,7 +237,11 @@ function CreateEventForm() {
 
         {/* activity drop down*/}
         <FormControl fullWidth className={`my-5`} sx={{ left: 0 }}>
-          <InputLabel id="activity-select-lable" className="form-label">
+          <InputLabel
+            id="activity-select-lable"
+            className="form-label"
+            style={{ color: "	white" }}
+          >
             activity type
           </InputLabel>
           <Select
@@ -271,6 +292,7 @@ function CreateEventForm() {
             }}
             value={dateTimeStart}
             onChange={handleTimeStartUpdate}
+            style={{ backgroundColor: "white" }}
           />
         </div>
 
@@ -287,6 +309,7 @@ function CreateEventForm() {
             }}
             value={dateTimeEnd}
             onChange={handleTimeEndUpdate}
+            style={{ backgroundColor: "white" }}
           />
         </div>
 
