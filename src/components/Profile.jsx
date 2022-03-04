@@ -1,26 +1,77 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "../config/axios";
 import { FcOk } from "react-icons/fc";
 import NavBar from "./layout/NavBar";
 import Input from "./layout/Input";
+import defaultImg from "../assets/images/profileImg.png";
 import { AuthContext } from "../contexts/AuthContext";
+import { Modal } from "bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Profile() {
 	const { user } = useContext(AuthContext);
-	const [profile, setProfile] = useState(null);
+	const navigate = useNavigate();
+	const [profile, setProfile] = useState([]);
 	const [isEditBio, setIseditBio] = useState(false);
+	const modalEl = useRef();
+	const imgInputEl = useRef();
+	const [img, setImg] = useState("");
+	const [modal, setModal] = useState(null);
+
+	const handleClick = () => {
+		const modalObj = new Modal(modalEl.current);
+		setModal(modalObj);
+
+		modalObj.show();
+	};
+
+	const handleSubmitForm = async (e) => {
+		console.log(e);
+		e.preventDefault();
+		const formData = new FormData();
+		formData.append("profile", img);
+		try {
+			const res = await axios.patch(`/users/profile/${user.id}`, formData);
+			console.log(res.data.user);
+			setProfile(res.data.user);
+			modal.hide();
+			setImg("");
+			// setTitle("");
+			imgInputEl.current.value = null;
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
 	useEffect(() => {
-		if (!profile) {
+		if (profile.length < 1) {
 			axios
 				.get(`/users/${user.id}`)
 				.then((res) => {
+					// console.log(event);
 					setProfile(res.data.user); // set new state
+					console.log(res.data.user);
 				})
 				.catch((err) => console.log(err));
 		}
+		console.log(user);
+		// console.log(profile);
 	}, [profile]);
+
+	// const fetchProfile = async () => {
+	//   try {
+	//     const res = await axios.get(`/users/${user.id}`);
+	//     setProfile(res.data.user); // set new state
+	//     console.log(res.data.user);
+	//   } catch (err) {
+	//     console.log(err);
+	//   }
+	// };
+
+	// useEffect(() => {
+	//   fetchProfile();
+	// }, []);
 
 	const updateBio = (id, bio) => {
 		axios
@@ -28,20 +79,102 @@ function Profile() {
 			.then((response) => {});
 	};
 
+	console.log(profile);
+	console.log(profile.imgUrl);
+	console.log(typeof profile);
+
 	return (
 		<div>
 			{profile && (
 				<div className="profile_image_profile">
-					<div className="profile_image_details">
-						<div>
-							<img
-								src="https://res.cloudinary.com/dup2jwtit/image/upload/v1645436464/profile-pic_lny6uc.jpg"
-								width="80"
-								height="80"
-								class="rounded-circle"
-								alt="user"
-							/>
+					<div>
+						<div className="profile_image_details">
+							<div>
+								<i className="fa-solid fa-camera " onClick={handleClick}></i>
+								<img
+									src={
+										profile.imgUrl && profile.imgUrl.length > 0
+											? profile.imgUrl
+											: defaultImg
+									}
+									width="80"
+									height="80"
+									className="rounded-circle"
+									alt="user"
+								/>
+							</div>
 						</div>
+
+						<div className="modal" ref={modalEl}>
+							<div className="modal-dialog">
+								<div className="modal-content">
+									<div className="modal-header">
+										<h5 className="modal-title">Create Post</h5>
+										<button
+											type="button"
+											className="btn-close"
+											data-bs-dismiss="modal"
+											onClick={() => {
+												setImg("");
+
+												imgInputEl.current.value = null;
+											}}
+										></button>
+									</div>
+
+									<div className="modal-body">
+										<form onSubmit={handleSubmitForm}>
+											<div className="mb-5">
+												{/* <textarea
+                          className="form-control mb-3"
+                          rows="3"
+                          placeholder="What's on your mind?"
+                          value={title}
+                          onChange={(e) => setTitle(e.target.value)}
+                        /> */}
+												{img && (
+													<img
+														src={URL.createObjectURL(img)}
+														className="img-fluid"
+														alt="post-img"
+													/>
+												)}
+												<div className="input-group mt-3">
+													<input
+														type="file"
+														className="form-control"
+														ref={imgInputEl}
+														onChange={(e) => {
+															if (e.target.files[0]) setImg(e.target.files[0]);
+														}}
+													/>
+													<button
+														className="btn btn-outline-danger"
+														type="button"
+														onClick={() => {
+															imgInputEl.current.value = null;
+															setImg("");
+														}}
+													>
+														Remove
+													</button>
+												</div>
+											</div>
+
+											<div className="d-grid">
+												<button
+													className="btn btn-primary"
+													onClick={() => navigate("/profile")}
+												>
+													Upload Picture
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
 						<div className="profile-name">
 							<div> {profile.firstName}</div>
 							<div>
@@ -68,6 +201,7 @@ function Profile() {
 									width: "100%",
 									minHeight: "150px",
 									backgroundColor: "	#404040",
+									marginTop: "25px",
 								}}
 								onChange={(e) => {
 									setProfile({ ...profile, bio: e.target.value });

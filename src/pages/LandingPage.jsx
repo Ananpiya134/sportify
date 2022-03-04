@@ -27,14 +27,15 @@ function LandingPage() {
   };
   return (
     <div className={`d-flex flex-column align-items-center`}>
-      <div style={{ marginTop: "69px" }}>
-        <h2 className="b-text">Sportify</h2>
+      <div style={{ marginTop: "80px" }}>
+        <h2 className="b-text">SPORTIFY</h2>
       </div>
       <img
         src="https://res.cloudinary.com/dup2jwtit/image/upload/v1644769593/david-tran-g-dZ1h7nQ0E-unsplash_1_grmrea.jpg"
         alt=""
         height="300"
         width="300"
+        style={{ marginTop: "80px" }}
       />
 
       <div
