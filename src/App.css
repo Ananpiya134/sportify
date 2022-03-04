@@ -237,10 +237,6 @@ button:hover {
   height: calc(100vh - 77px);
 }
 
-/* .main-layout-conatiner {
-  min-height: calc(100vh - 77px);
-} */
-
 .nav_body {
   background-color: #141414;
   width: 100vw;
