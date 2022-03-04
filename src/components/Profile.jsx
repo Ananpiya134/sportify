@@ -209,7 +209,7 @@ function Profile() {
                 value={profile && profile.bio ? profile.bio : ""}
               />
               <button
-                className="btn btn-warning"
+                className="btn btn-success"
                 onClick={() => {
                   let bio = profile.bio;
                   axios
@@ -229,7 +229,7 @@ function Profile() {
                 Update
               </button>
               <button
-                className="btn btn-danger"
+                className="btn btn-dark"
                 onClick={() => {
                   setIseditBio(false);
                 }}
