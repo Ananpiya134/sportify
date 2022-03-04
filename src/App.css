@@ -111,7 +111,7 @@ label {
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   background-position: 0% 0%;
-
+  color: white;
   background-size: 500% auto;
   /* animation: gradient 3s linear infinite; */
 }
