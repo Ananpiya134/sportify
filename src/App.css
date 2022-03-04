@@ -121,7 +121,7 @@ label {
 }
 
 .create_event_input {
-  position: relative;
+  /* position: relative;
   display: flex;
   flex-direction: row;
   height: 50px;
@@ -130,7 +130,25 @@ label {
   margin: 0 auto;
   border-radius: 2px;
   padding: 1.4rem 2rem 1.6rem;
-  background: --input-background;
+  background: --input-background; */
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 5px;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 2px;
+  padding: 1.4rem 2rem 1.6rem;
+  background: #323232;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  color: white;
+  background-size: 500% auto;
   /* position: relative;
   display: flex;
   flex-direction: row;
@@ -147,33 +165,9 @@ label {
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   background-position: 0% 0%;
-
-  background-size: 500% auto; */
+ */
 }
 
-.create_event_input:after {
-  content: "";
-  position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 999;
-  height: 2px;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-  background-position: 0% 0%;
-  background: linear-gradient(
-    to right,
-    #b294ff,
-    #57e6e6,
-    #feffb8,
-    #57e6e6,
-    #b294ff,
-    #57e6e6
-  );
-  background-size: 500% auto;
-  animation: gradient 3s linear infinite;
-}
 /* line */
 .line-box {
   position: relative;
@@ -199,6 +193,10 @@ label {
 
 .label-active {
   top: -3em;
+}
+/* fix create event header extras */
+.mx-4 {
+  margin-left: 0 !important;
 }
 
 button {
@@ -533,4 +531,10 @@ svg {
 }
 .upload-btn {
   border-radius: 0px;
+}
+/* Create event input boder color */
+.form-control:focus {
+  color: white;
+  background-color: #323232;
+  border-color: #323232;
 }

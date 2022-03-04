@@ -242,7 +242,7 @@ function CreateEventForm() {
             className="form-label"
             style={{ color: "	white" }}
           >
-            activity type
+            Activity type
           </InputLabel>
           <Select
             labelId="activity-select-label"
@@ -292,7 +292,7 @@ function CreateEventForm() {
             }}
             value={dateTimeStart}
             onChange={handleTimeStartUpdate}
-            style={{ backgroundColor: "white" }}
+            style={{ backgroundColor: "#323232" }}
           />
         </div>
 
@@ -309,7 +309,7 @@ function CreateEventForm() {
             }}
             value={dateTimeEnd}
             onChange={handleTimeEndUpdate}
-            style={{ backgroundColor: "white" }}
+            style={{ backgroundColor: "#323232" }}
           />
         </div>
 
