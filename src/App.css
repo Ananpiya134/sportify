@@ -93,6 +93,16 @@ label {
     background-position: 100% 0;
   }
 }
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  left: 0 !important;
+  padding: 0 !important;
+}
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
 /* input */
 .input {
   position: relative;
@@ -215,7 +225,7 @@ button {
 }
 
 button:hover {
-  background: #5e564b;
+  /* background: #5e564b; */
   color: #ffffff;
 }
 
@@ -349,7 +359,14 @@ button:hover {
   color: #50c878;
   font-size: 30px;
   line-height: 0;
-  font-family: sans-serif;
+}
+.b-text-landing {
+  color: #50c878;
+  font-family: "Times New Roman", serif;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 35px;
 }
 
 .event_detail_image_header {
