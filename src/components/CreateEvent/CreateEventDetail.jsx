@@ -15,15 +15,38 @@ import {
 } from "@mui/material";
 import { AuthContext } from "../../contexts/AuthContext";
 import { EventContext } from "../../contexts/EventContext";
+import MenuList from "../../components-control/MenuItem.js";
+import { createStyles, makeStyles } from "@material-ui/core/styles";
+
 // import Select from "@mui/material/Select";
 // import InputLabel from "@mui/material/InputLabel";
 // import MenuItem from "@mui/material/MenuItem";
 // import FormControl from "@mui/material/FormControl";
 
+// styling matirial UI date picker and else. //
+const useStyles = makeStyles(() => ({
+  root: {
+    "& .MuiOutlinedInput-input": {
+      color: "white",
+    },
+    "& .MuiInputLabel-root": {
+      color: "white",
+    },
+    list: {
+      padding: 0,
+    },
+  },
+}));
+//styling with styled
+// export const MenuItemStyled = styled(MenuItem)`
+//   padding: 0;
+//   color: red;
+// `;
+
 function CreateEventForm() {
   const { user } = useContext(AuthContext);
   const { activityList } = useContext(EventContext);
-
+  const classes = useStyles();
   const [eventName, setEventName] = useState("");
   const [eventCapacity, setEventCapacity] = useState("");
   const [eventLocation, setEventLocation] = useState("");
@@ -82,8 +105,9 @@ function CreateEventForm() {
   const handleChooseSkillOption = (e) => {
     setSkillLevel(e.target.value);
   };
-
+  console.log(activityId);
   const handleChooseActivityOption = (e) => {
+    console.log(e.target.value);
     setActivityId(e.target.value);
   };
 
@@ -107,10 +131,19 @@ function CreateEventForm() {
     if (skillLevel) console.log(skillLevel);
     if (activityId) console.log(activityId);
   };
+  // const Select = styled.label`
+  //   padding-top: 0;
+  //   padding-bottom: 0;
+  //   height: 50px;
+  // `;
 
   return (
     <>
-      <form className={`w-100`} onSubmit={handleSubmitCreateEvent}>
+      <form
+        className={`w-100`}
+        onSubmit={handleSubmitCreateEvent}
+        style={{ padding: "0" }}
+      >
         {/* event name input */}
         <div className="create_event_container ">
           <label
@@ -190,7 +223,7 @@ function CreateEventForm() {
         </div>
 
         {/* level drop down*/}
-        <FormControl fullWidth className={`my-5`} sx={{ left: 0 }}>
+        <FormControl fullWidth className={`my-5 `} sx={{ left: 0 }}>
           <InputLabel
             id="skill-select-lable"
             className="form-label"
@@ -199,11 +232,12 @@ function CreateEventForm() {
             Skill Level
           </InputLabel>
           <Select
+            MenuProps={{ classes: { list: classes.list } }}
             labelId="skill-label"
             id="skill-label"
             label="skill-level"
             value={skillLevel}
-            sx={{ height: "50px" }}
+            sx={{ height: "50px", padding: "0px" }}
             onChange={handleChooseSkillOption}
             style={{ backgroundColor: "#323232", color: "	white" }}
           >
@@ -229,6 +263,7 @@ function CreateEventForm() {
             <MenuItem
               value={"EXPERT"}
               style={{ backgroundColor: "#323232", color: "white" }}
+              className={classes.root}
             >
               Expert
             </MenuItem>
@@ -236,7 +271,11 @@ function CreateEventForm() {
         </FormControl>
 
         {/* activity drop down*/}
-        <FormControl fullWidth className={`my-5`} sx={{ left: 0 }}>
+        <FormControl
+          fullWidth
+          className={`my-5 activity-picker`}
+          sx={{ left: 0 }}
+        >
           <InputLabel
             id="activity-select-lable"
             className="form-label"
@@ -244,14 +283,22 @@ function CreateEventForm() {
           >
             Activity type
           </InputLabel>
+          {/* <MenuList
+            classes={classes}
+            aid={activityId}
+            hc={handleChooseActivityOption}
+            al={activityList}
+          /> */}
           <Select
+            MenuProps={{ classes: { list: classes.list } }}
+            className={classes.root}
             labelId="activity-select-label"
             id="activity-label"
             label="activity"
             value={activityId}
             sx={{ height: "50px" }}
             onChange={handleChooseActivityOption}
-            className="activity-select"
+            // className="activity-select"
             style={{ backgroundColor: "#323232", color: "	white" }}
           >
             <MenuItem
@@ -260,8 +307,6 @@ function CreateEventForm() {
               style={{
                 backgroundColor: "#323232",
                 color: "	white",
-                paddingTop: "0px !important",
-                paddingBottom: "0px !important",
               }}
             >
               Select
@@ -282,6 +327,7 @@ function CreateEventForm() {
         {/* date time start */}
         <div className="create_event_container">
           <TextField
+            className={classes.root}
             fullWidth
             id="datetime-local"
             label="date-time start"
@@ -292,13 +338,14 @@ function CreateEventForm() {
             }}
             value={dateTimeStart}
             onChange={handleTimeStartUpdate}
-            style={{ backgroundColor: "#323232" }}
+            style={{ backgroundColor: "#323232", color: "white !important" }}
           />
         </div>
 
         {/* date time end */}
         <div className="create_event_container">
           <TextField
+            className={classes.root}
             fullWidth
             id="datetime-local"
             label="date-time end"
@@ -317,7 +364,7 @@ function CreateEventForm() {
         <div className={`mt-5`}>
           <button
             className={`add_btn rounded-2 w-50`}
-            style={{ fontSize: "1rem" }}
+            style={{ fontSize: "1rem", marginBottom: "100px" }}
           >
             Create Event
           </button>
