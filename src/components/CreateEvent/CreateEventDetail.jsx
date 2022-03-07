@@ -35,6 +35,12 @@ const useStyles = makeStyles(() => ({
     list: {
       padding: 0,
     },
+    "& .MuiOutlinedInput-input:focus": {
+      // boxShadow: "0 0 0 0.15rem rgb(51 168 82)",
+    },
+    "& .MuiInputLabel-root:focus": {
+      // boxShadow: "0 0 0 0.15rem rgb(51 168 82)",
+    },
   },
 }));
 //styling with styled
@@ -227,7 +233,7 @@ function CreateEventForm() {
           <InputLabel
             id="skill-select-lable"
             className="form-label"
-            style={{ color: "	white" }}
+            style={{ color: "	white", borderColor: "inherit" }}
           >
             Skill Level
           </InputLabel>

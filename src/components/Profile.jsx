@@ -89,8 +89,12 @@ function Profile() {
         <div className="profile_image_profile">
           <div>
             <div className="profile_image_details">
-              <div>
-                <i className="fa-solid fa-camera " onClick={handleClick}></i>
+              <div className="camera-icon">
+                <i
+                  className="fa-solid fa-camera "
+                  onClick={handleClick}
+                  style={{ paddingRight: "10px" }}
+                ></i>
                 <img
                   src={
                     profile.imgUrl && profile.imgUrl.length > 0

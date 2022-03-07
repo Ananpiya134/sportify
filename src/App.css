@@ -93,7 +93,7 @@ label {
     background-position: 100% 0;
   }
 }
-
+/* mui menu list dropdown */
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
   left: 0 !important;
   padding: 0 !important;
@@ -102,7 +102,12 @@ label {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
-
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper:active {
+  border-color: black !important;
+}
+.css-6hp17o-MuiList-root-MuiMenu-list:active {
+  border-color: black !important;
+}
 /* input */
 .input {
   position: relative;
@@ -510,10 +515,14 @@ svg {
 .profile-name {
   display: flex;
   margin-top: 10px;
+  margin-left: 50px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .profile-area {
   margin-top: 5px;
+  margin-left: 50px;
 }
 
 .p-friend {
@@ -550,4 +559,59 @@ svg {
   color: white;
   background-color: #323232;
   border-color: #323232;
+  box-shadow: 0 0 0 0.15rem rgb(51 168 82);
+}
+/*form-control and input and button hover color */
+/* .form-control:active {
+  box-shadow: 0 0 0 0.15rem rgb(51 168 82);
+} */
+
+.css-13mte4u-MuiFormControl-root {
+  box-shadow: 0 0 0 0.05rem rgb(235, 233, 233);
+}
+.css-z67o7l-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:focus {
+  box-shadow: white !important;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  box-shadow: white !important;
+}
+.home_btn:hover {
+  box-shadow: 0 0 0 0.15rem rgb(61, 117, 76);
+}
+.event_btn:hover {
+  box-shadow: 0 0 0 0.15rem rgb(61, 117, 76);
+}
+.profile_btn:hover {
+  box-shadow: 0 0 0 0.15rem rgb(61, 117, 76);
+}
+.add_btn:hover {
+  box-shadow: 0 0 0 0.15rem rgb(61, 117, 76);
+}
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus {
+  box-shadow: green;
+}
+
+/* date-time-start-and-end-box-shadow */
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  box-shadow: rgb(255, 255, 255) !important;
+}
+
+.css-z67o7l-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: green !important;
+}
+.css-1nreaws-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: green !important;
+}
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-color: green !important;
+}
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root {
+  box-shadow: white !important;
+}
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  border: solid white !important;
 }
