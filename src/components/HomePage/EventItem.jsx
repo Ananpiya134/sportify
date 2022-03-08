@@ -22,13 +22,13 @@ function EventItem({
 	}, []);
 
 	const handleClickNext = () => {
-		eventIndex === eventsLength - 1
+		eventIndex === eventsLength - 2
 			? setEventIndex(0)
 			: setEventIndex(eventIndex + 1);
 	};
 
 	const handleClickPrev = () => {
-		eventIndex === 0
+		eventIndex === 1
 			? setEventIndex(eventsLength - 1)
 			: setEventIndex(eventIndex - 1);
 	};
@@ -60,11 +60,9 @@ function EventItem({
 								{/* <span className="text-black">{currentEvent.timeStart}</span> */}
 								<span className="text-black"> P.M.</span>
 							</p>
-							<p className={`b-text mt-4`}>
-								{/* target distance */}
-								{targetDistance}
-								k.m.
-							</p>
+							{/* target distance */}
+
+							<p className={`b-text mt-4`}>{targetDistance} k.m.</p>
 						</div>
 					</div>
 				</Link>
