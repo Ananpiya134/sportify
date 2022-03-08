@@ -130,7 +130,9 @@ label {
   background-size: 500% auto;
   /* animation: gradient 3s linear infinite; */
 }
-
+.input:focus {
+  border-color: green !important;
+}
 .create_event_container {
   margin: 15px 0;
 }
@@ -204,6 +206,7 @@ label {
 
 .input:focus + .line-box .line {
   width: 100%;
+  box-shadow: green !important;
 }
 
 .label-active {
@@ -256,6 +259,7 @@ button:hover {
   background-color: white;
   color: black;
   margin-top: 20px;
+  font-size: 16px !important;
 }
 
 .body {
@@ -531,6 +535,10 @@ svg {
 
 .google_btn * {
   color: black;
+  font-size: 17px;
+}
+.google_btn > span {
+  width: 281.5px;
 }
 
 /* calendar */
@@ -614,4 +622,8 @@ svg {
 }
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
   border: solid white !important;
+}
+textarea:focus,
+input:focus {
+  outline: none;
 }
