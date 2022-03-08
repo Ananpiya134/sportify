@@ -82,7 +82,9 @@ function EventDetail() {
 						<div className={`d-flex stats event-going`}>
 							<p className={`b-text title-stats`}>Going</p>
 							<p className={`b-text value-stats`}>
-								{event.Participations.length}
+								{goingStatus
+									? event.Participations.length + 1
+									: event.Participations.length}
 							</p>
 						</div>
 						<div className={`d-flex stats event-skill `}>
