@@ -28,8 +28,8 @@ function EventItem({
 	};
 
 	const handleClickPrev = () => {
-		eventIndex === 1
-			? setEventIndex(eventsLength - 1)
+		eventIndex === 0
+			? setEventIndex(eventsLength - 2)
 			: setEventIndex(eventIndex - 1);
 	};
 
