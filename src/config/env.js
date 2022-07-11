@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:8000";
 
-const GOOGLE_MAP_API = "AIzaSyC3N4DD1AeB2JkJakqgza3V85eefaq-oWg";
-const GEOCODE_API = "AIzaSyC3N4DD1AeB2JkJakqgza3V85eefaq-oWg";
+const GOOGLE_MAP_API = "AIzaSyDIOvQ4-LJxm-6ibapER7CTGT8CQADmV3g";
+const GEOCODE_API = "AIzaSyDIOvQ4-LJxm-6ibapER7CTGT8CQADmV3g";
 
 const REACT_GOOGLE_CLIENT_ID =
 	"588998163453-nhkhfn4gpkjslb7sdf6n8gluj0blu619.apps.googleusercontent.com";

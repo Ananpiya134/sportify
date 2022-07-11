@@ -1,9 +1,7 @@
 import RouteConfig from "./routes/RouteConfig";
+import { useEffect, useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
-import { useContext } from "react";
 import { ErrorContext } from "./contexts/ErrorContext";
-import { useEffect } from "react";
-
 import { ToastContext } from "./contexts/ToastContext";
 import "react-toastify/dist/ReactToastify.css";
 
