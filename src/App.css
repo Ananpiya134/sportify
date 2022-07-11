@@ -596,6 +596,11 @@ svg {
 .add_btn:hover {
 	box-shadow: 0 0 0 0.15rem rgb(61, 117, 76);
 }
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+	border-radius: 0px;
+	border: 1px solid white;
+}
+
 .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus {
 	box-shadow: green;
 }
@@ -626,4 +631,8 @@ svg {
 textarea:focus,
 input:focus {
 	outline: none;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+	border: 1px solid white !important;
 }

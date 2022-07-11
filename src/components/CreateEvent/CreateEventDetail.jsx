@@ -231,8 +231,7 @@ function CreateEventForm() {
 				{/* level drop down*/}
 				<FormControl
 					fullWidth
-					className={`my-5 `}
-					sx={{ width: "800px", border: "1px solid white", margin: "auto" }}
+					sx={{ width: "390px", border: "1px solid white", margin: "15px 0" }}
 				>
 					<InputLabel
 						id="skill-select-lable"
@@ -247,7 +246,7 @@ function CreateEventForm() {
 						id="skill-label"
 						label="skill-level"
 						value={skillLevel}
-						sx={{ padding: "0px" }}
+						// sx={{ padding: "0px" }}
 						onChange={handleChooseSkillOption}
 						style={{ backgroundColor: "#323232", color: "	white" }}
 					>
@@ -283,8 +282,7 @@ function CreateEventForm() {
 				{/* activity drop down*/}
 				<FormControl
 					fullWidth
-					className={`my-5`}
-					sx={{ width: "800px", border: "1px solid white", margin: "auto" }}
+					sx={{ width: "390px", border: "1px solid white", margin: "15px 0" }}
 				>
 					<InputLabel
 						id="activity-select-lable"
@@ -300,16 +298,15 @@ function CreateEventForm() {
 						id="activity-label"
 						label="activity"
 						value={activityId}
-						// sx={{ height: "50px" }}
 						onChange={handleChooseActivityOption}
-						style={{ backgroundColor: "#323232", color: "	white" }}
+						style={{ backgroundColor: "#323232", color: "white" }}
 					>
 						<MenuItem
 							value=""
 							disabled
 							style={{
 								backgroundColor: "#323232",
-								color: "	white",
+								color: "white",
 							}}
 						>
 							Select
@@ -328,48 +325,49 @@ function CreateEventForm() {
 				</FormControl>
 
 				{/* date time start */}
-				<div className="create_event_container">
-					<TextField
-						className={classes.root}
-						fullWidth
-						id="datetime-local"
-						label="date-time start"
-						type="datetime-local"
-						defaultValue="2017-05-24T10:30"
-						InputLabelProps={{
-							shrink: true,
-						}}
-						value={dateTimeStart}
-						onChange={handleTimeStartUpdate}
-						style={{ backgroundColor: "#323232", color: "white !important" }}
-						sx={{ width: "800px", border: "1px solid white", margin: "auto" }}
-					/>
-				</div>
+				<TextField
+					className={classes.root}
+					fullWidth
+					id="datetime-local"
+					label="date-time start"
+					type="datetime-local"
+					defaultValue="2017-05-24T10:30"
+					InputLabelProps={{
+						shrink: true,
+					}}
+					value={dateTimeStart}
+					onChange={handleTimeStartUpdate}
+					style={{ backgroundColor: "#323232", color: "white !important" }}
+					sx={{ width: "390px", margin: "15px 0" }}
+				/>
 
 				{/* date time end */}
-				<div className="create_event_container">
-					<TextField
-						className={classes.root}
-						fullWidth
-						id="datetime-local"
-						label="date-time end"
-						type="datetime-local"
-						defaultValue="2017-05-24T10:30"
-						InputLabelProps={{
-							shrink: true,
-						}}
-						value={dateTimeEnd}
-						onChange={handleTimeEndUpdate}
-						style={{ backgroundColor: "#323232" }}
-						sx={{ width: "800px", border: "1px solid white", margin: "auto" }}
-					/>
-				</div>
+				<TextField
+					className={classes.root}
+					fullWidth
+					id="datetime-local"
+					label="date-time end"
+					type="datetime-local"
+					defaultValue="2017-05-24T10:30"
+					InputLabelProps={{
+						shrink: true,
+					}}
+					value={dateTimeEnd}
+					onChange={handleTimeEndUpdate}
+					style={{ backgroundColor: "#323232" }}
+					sx={{
+						width: "390px",
+						margin: "15px 0",
+						// border: "1px solid white !important",
+					}}
+				/>
 
 				{/* button */}
 				<div className={`mt-5`}>
 					<button
 						className={`add_btn rounded-2 w-50`}
 						style={{ fontSize: "1rem", marginBottom: "100px" }}
+						onClick={handleSubmitCreateEvent}
 					>
 						Create Event
 					</button>
