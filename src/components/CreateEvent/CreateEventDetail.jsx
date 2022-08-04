@@ -43,11 +43,6 @@ const useStyles = makeStyles(() => ({
 		},
 	},
 }));
-//styling with styled
-// export const MenuItemStyled = styled(MenuItem)`
-//   padding: 0;
-//   color: red;
-// `;
 
 function CreateEventForm() {
 	const { user } = useContext(AuthContext);
@@ -125,23 +120,6 @@ function CreateEventForm() {
 		setDateTimeEnd(e.target.value);
 	};
 
-	const test = (e) => {
-		e.preventDefault();
-		if (eventName) console.log(eventName);
-		if (description) console.log(description);
-		if (locationLatLng)
-			console.log(`lat ${locationLatLng.lat} and lang ${locationLatLng.lng}`);
-		if (dateTimeStart) console.log(dateTimeStart);
-		if (dateTimeEnd) console.log(dateTimeEnd);
-		if (eventCapacity) console.log(eventCapacity);
-		if (skillLevel) console.log(skillLevel);
-		if (activityId) console.log(activityId);
-	};
-	// const Select = styled.label`
-	//   padding-top: 0;
-	//   padding-bottom: 0;
-	//   height: 50px;
-	// `;
 
 	return (
 		<>
